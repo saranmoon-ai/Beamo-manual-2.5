@@ -79,16 +79,16 @@ header{
   background:transparent;
 }
 .hero::before{
-  content:"";position:absolute;top:-120px;right:-100px;width:420px;height:420px;border-radius:50%;
+  content:"";position:absolute;top:-50px;right:-100px;width:420px;height:420px;border-radius:50%;
   background:radial-gradient(circle, rgba(255,255,255,0.14) 0%, rgba(255,255,255,0) 70%);
 }
 .hero::after{
-  content:"";position:absolute;bottom:-160px;left:-120px;width:480px;height:480px;border-radius:50%;
+  content:"";position:absolute;bottom:-60px;left:-120px;width:480px;height:480px;border-radius:50%;
   background:radial-gradient(circle, rgba(255,255,255,0.10) 0%, rgba(255,255,255,0) 70%);
 }
 .hero-watermark{
-  position:absolute;top:50%;right:-90px;transform:translateY(-50%);
-  height:520px;width:auto;opacity:0.09;pointer-events:none;z-index:0;
+  position:absolute;top:50%;right:-40px;transform:translateY(-50%);
+  max-height:calc(100% - 56px);width:auto;opacity:0.09;pointer-events:none;z-index:0;
 }
 .hero-label{position:relative;font-size:12px;font-weight:700;color:#BFD3FF;letter-spacing:0.14em;margin-bottom:14px;}
 .hero h1{position:relative;font-size:42px;font-weight:800;letter-spacing:-0.02em;margin-bottom:14px;color:#fff;}
@@ -99,7 +99,8 @@ header{
   padding:15px 20px;box-shadow:0 14px 34px rgba(0,15,60,0.25);
 }
 .hero-search input{flex:1;border:none;outline:none;font-size:14.5px;font-family:inherit;}
-.hero-search .search-icon{color:var(--caption);font-size:16px;}
+.hero-search .search-icon{display:flex;color:var(--caption);flex-shrink:0;}
+.hero-search .search-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;}
 
 /* ---------- Browse-by section ---------- */
 .browse{padding:48px 40px 72px;max-width:1140px;margin:0 auto;}
@@ -120,7 +121,10 @@ header{
 .tab-btn:hover{border-color:var(--primary);box-shadow:0 8px 20px rgba(0,20,70,0.2);}
 .tab-btn.active{
   background:#fff;border-color:var(--primary);
-  box-shadow:0 0 0 3px rgba(0,70,204,0.16), 0 0 22px rgba(0,70,204,0.45), 0 6px 18px rgba(0,20,70,0.14);
+  box-shadow:
+    0 0 0 3px var(--primary),
+    0 0 32px 6px rgba(70,140,255,0.7),
+    0 14px 30px rgba(0,10,45,0.4);
 }
 .tab-icon{display:flex;color:var(--primary);}
 .tab-icon svg{width:20px;height:20px;stroke:currentColor;fill:none;}
