@@ -129,9 +129,14 @@ function renderHero() {
 
 function renderFooter() {
   const linksEl = document.getElementById("footer-links");
-  const ABOUT_US_INDEX = 4; // "회사 소개" / "About Us" / "会社概要" — same position in every language array
+  const BEAMO_HOME_INDEX = 0; // "beamo 홈페이지" / "beamo Website" / "beamo ウェブサイト" — same position in every language array
+  const BEAMO_HOME_URL = "https://www.beamo.ai/";
+  const ABOUT_US_INDEX = 3; // "회사 소개" / "About Us" / "会社概要" — same position in every language array
   const ABOUT_US_URL = "https://3i.ai/";
   linksEl.innerHTML = t().footerLinks.map((l, i) => {
+    if (i === BEAMO_HOME_INDEX) {
+      return `<a href="${BEAMO_HOME_URL}" target="_blank" rel="noopener">${escapeHtml(l)}</a>`;
+    }
     if (i === ABOUT_US_INDEX) {
       return `<a href="${ABOUT_US_URL}" target="_blank" rel="noopener">${escapeHtml(l)}</a>`;
     }

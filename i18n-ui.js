@@ -40,7 +40,7 @@ const UI = {
       user: { all: "전체", surveyor: "촬영자", admin: "관리자" },
       step: { "1": "1단계 · 준비", "2": "2단계 · 촬영", "3": "3단계 · 활용", "4": "4단계 · 관리" }
     },
-    footerLinks: ["beamo 홈페이지", "고객 지원", "개인정보처리방침", "이용약관", "회사 소개", "문의하기"],
+    footerLinks: ["beamo 홈페이지", "개인정보처리방침", "이용약관", "회사 소개", "문의하기"],
     footerCopy: "© 2026 3i Inc. All rights reserved."
   },
   en: {
@@ -84,7 +84,7 @@ const UI = {
       user: { all: "All Users", surveyor: "Surveyor", admin: "Admin" },
       step: { "1": "Step 1 · Prepare", "2": "Step 2 · Capture", "3": "Step 3 · Use", "4": "Step 4 · Manage" }
     },
-    footerLinks: ["beamo Website", "Support", "Privacy Policy", "Terms of Service", "About Us", "Contact"],
+    footerLinks: ["beamo Website", "Privacy Policy", "Terms of Service", "About Us", "Contact"],
     footerCopy: "© 2026 3i Inc. All rights reserved."
   },
   ja: {
@@ -128,7 +128,7 @@ const UI = {
       user: { all: "すべて", surveyor: "撮影者", admin: "管理者" },
       step: { "1": "ステップ1・準備", "2": "ステップ2・撮影", "3": "ステップ3・活用", "4": "ステップ4・管理" }
     },
-    footerLinks: ["beamo ウェブサイト", "サポート", "プライバシーポリシー", "利用規約", "会社概要", "お問い合わせ"],
+    footerLinks: ["beamo ウェブサイト", "プライバシーポリシー", "利用規約", "会社概要", "お問い合わせ"],
     footerCopy: "© 2026 3i Inc. All rights reserved."
   }
 };
