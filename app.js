@@ -129,7 +129,14 @@ function renderHero() {
 
 function renderFooter() {
   const linksEl = document.getElementById("footer-links");
-  linksEl.innerHTML = t().footerLinks.map(l => `<button type="button">${escapeHtml(l)}</button>`).join("");
+  const ABOUT_US_INDEX = 4; // "회사 소개" / "About Us" / "会社概要" — same position in every language array
+  const ABOUT_US_URL = "https://3i.ai/";
+  linksEl.innerHTML = t().footerLinks.map((l, i) => {
+    if (i === ABOUT_US_INDEX) {
+      return `<a href="${ABOUT_US_URL}" target="_blank" rel="noopener">${escapeHtml(l)}</a>`;
+    }
+    return `<button type="button">${escapeHtml(l)}</button>`;
+  }).join("");
   document.getElementById("footer-copy").textContent = t().footerCopy;
 }
 
