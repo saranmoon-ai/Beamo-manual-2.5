@@ -330,10 +330,24 @@ function renderArticleDetail(areaEl) {
 function gotoArticle(key) {
   const article = getArticleByKey(key);
   if (!article) return;
-  state.searchMode = false;
-  state.searchQuery = "";
-  state.axis = "version";
-  state.value = article.version;
+
+  // Keep whatever list the user was already browsing (axis/value) so that
+  // "back to list" returns to that same filtered list instead of jumping
+  // all the way back to the version list. Only reset the axis/value when
+  // the article was reached from search, or from a context (e.g. a
+  // cross-article link) whose current axis/value wouldn't even include it.
+  const cameFromMatchingList =
+    !state.searchMode &&
+    state.value !== null &&
+    matchesAxisValue(article, state.axis, state.value);
+
+  if (!cameFromMatchingList) {
+    state.searchMode = false;
+    state.searchQuery = "";
+    state.axis = "version";
+    state.value = article.version;
+  }
+
   state.articleKey = key;
   renderAll();
 }
@@ -368,8 +382,54 @@ function handleSearchInput(value) {
   renderAll();
 }
 
+/* ---------- image lightbox (click to enlarge) ---------- */
+function ensureLightbox() {
+  let lb = document.getElementById("img-lightbox");
+  if (lb) return lb;
+  lb = document.createElement("div");
+  lb.id = "img-lightbox";
+  lb.className = "lightbox-overlay";
+  lb.innerHTML = `
+    <button type="button" class="lightbox-close" aria-label="Close">&times;</button>
+    <img class="lightbox-img" id="img-lightbox-img" src="" alt="">
+  `;
+  document.body.appendChild(lb);
+
+  lb.addEventListener("click", (e) => {
+    if (e.target === lb || e.target.classList.contains("lightbox-close")) {
+      closeLightbox();
+    }
+  });
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeLightbox();
+  });
+  return lb;
+}
+
+function openLightbox(src, alt) {
+  const lb = ensureLightbox();
+  const img = document.getElementById("img-lightbox-img");
+  img.src = src;
+  img.alt = alt || "";
+  lb.classList.add("open");
+}
+
+function closeLightbox() {
+  const lb = document.getElementById("img-lightbox");
+  if (lb) lb.classList.remove("open");
+}
+
 /* ---------- init ---------- */
 document.addEventListener("DOMContentLoaded", () => {
+  ensureLightbox();
+
+  // delegated click handler: any image inside a rendered article body
+  // opens an enlarged view, regardless of how/when it was rendered
+  document.addEventListener("click", (e) => {
+    const img = e.target.closest(".article-body img");
+    if (img) openLightbox(img.getAttribute("src"), img.getAttribute("alt"));
+  });
+
   document.querySelectorAll(".lang-switch button").forEach(btn => {
     btn.addEventListener("click", () => {
       state.lang = btn.dataset.lang;

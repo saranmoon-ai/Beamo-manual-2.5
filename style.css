@@ -183,7 +183,26 @@ header{
 .article-body li{margin-bottom:8px;line-height:1.8;}
 .article-body strong{color:var(--text);font-weight:700;}
 .article-body hr{border:none;border-top:1px solid var(--border);margin:26px 0;}
-.article-body img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--border);margin:10px 0 18px;display:block;}
+.article-body img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--border);margin:10px 0 18px;display:block;cursor:zoom-in;transition:opacity .15s ease;}
+.article-body img:hover{opacity:0.88;}
+
+/* image lightbox */
+.lightbox-overlay{
+  position:fixed;inset:0;z-index:200;background:rgba(20,20,24,0.88);
+  display:none;align-items:center;justify-content:center;padding:40px;
+  cursor:zoom-out;
+}
+.lightbox-overlay.open{display:flex;}
+.lightbox-overlay .lightbox-img{
+  max-width:100%;max-height:100%;border-radius:8px;
+  box-shadow:0 20px 60px rgba(0,0,0,0.5);cursor:default;
+}
+.lightbox-overlay .lightbox-close{
+  position:absolute;top:20px;right:28px;font-size:32px;line-height:1;color:#fff;
+  background:rgba(255,255,255,0.12);border-radius:50%;width:40px;height:40px;
+  display:flex;align-items:center;justify-content:center;cursor:pointer;
+}
+.lightbox-overlay .lightbox-close:hover{background:rgba(255,255,255,0.24);}
 .article-body table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:12.5px;display:block;overflow-x:auto;white-space:nowrap;}
 .article-body table tr{white-space:normal;}
 .article-body th, .article-body td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top;}
