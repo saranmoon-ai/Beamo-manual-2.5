@@ -53,10 +53,7 @@ header{
 }
 .logo{display:flex;align-items:center;gap:12px;cursor:pointer;}
 .logo-mark{
-  width:36px;height:36px;border-radius:10px;background:#fff;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--primary);font-weight:800;font-size:17px;flex-shrink:0;
-  box-shadow:0 4px 10px rgba(0,0,0,0.15);
+  height:34px;width:auto;display:block;flex-shrink:0;
 }
 .logo-text{font-weight:800;font-size:19px;letter-spacing:-0.01em;color:#fff;}
 .logo-text span{color:#BFD3FF;}
@@ -242,6 +239,7 @@ footer{
   display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;
   background:var(--gradient-brand);
 }
+.footer-logo{height:24px;width:auto;opacity:0.9;}
 .footer-links{display:flex;gap:22px;font-size:13px;color:rgba(255,255,255,0.8);flex-wrap:wrap;}
 .footer-links button{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);}
 .footer-links button:hover{color:#fff;}
