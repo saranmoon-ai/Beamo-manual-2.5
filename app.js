@@ -7,7 +7,14 @@ const AXIS_VALUES = {
   step: ["1", "2", "3", "4"]
 };
 const AXIS_ORDER = ["version", "platform", "feature", "user", "step"];
-const AXIS_ICON = { version: "🏷️", platform: "📱", feature: "🧩", user: "👤", step: "🪜" };
+/* simple single-color line icons (currentColor) replacing the old emoji set */
+const AXIS_ICON_SVG = {
+  version: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M10 3h5.5a1.5 1.5 0 0 1 1.5 1.5V10L9.5 17.5a1.5 1.5 0 0 1-2.12 0L3 13.12a1.5 1.5 0 0 1 0-2.12L10 3Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg>',
+  platform: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><rect x="2.5" y="4" width="15" height="10" rx="1.5" stroke-width="1.6"/><path d="M7 17.5h6M10 14v3.5" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  feature: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><rect x="2.5" y="2.5" width="6" height="6" rx="1.2" stroke-width="1.6"/><rect x="11.5" y="2.5" width="6" height="6" rx="1.2" stroke-width="1.6"/><rect x="2.5" y="11.5" width="6" height="6" rx="1.2" stroke-width="1.6"/><rect x="11.5" y="11.5" width="6" height="6" rx="1.2" stroke-width="1.6"/></svg>',
+  user: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><circle cx="10" cy="6.5" r="3.3" stroke-width="1.6"/><path d="M3.5 17c0-3.4 3-5.5 6.5-5.5s6.5 2.1 6.5 5.5" stroke-width="1.6" stroke-linecap="round"/></svg>',
+  step: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M3 17v-3.5h3.5V17M8.5 17V9.5H12V17M13.5 17V5h3.5v12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
+};
 
 const state = {
   lang: "ko",
@@ -139,7 +146,8 @@ function renderTabs() {
     const active = state.axis === axis && !state.searchMode ? "active" : "";
     const ax = t().axes[axis];
     return `<button type="button" class="tab-btn ${active}" data-axis="${axis}">
-      <span class="tab-title">${AXIS_ICON[axis]} ${escapeHtml(ax.label)}</span>
+      <span class="tab-icon">${AXIS_ICON_SVG[axis]}</span>
+      <span class="tab-title">${escapeHtml(ax.label)}</span>
       <span class="tab-sub">${escapeHtml(ax.sub)}</span>
     </button>`;
   }).join("");
