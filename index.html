@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>beamo Manual Center</title>
+<link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+<header>
+  <div class="logo" id="logo-home">
+    <div class="logo-mark">b</div>
+    <div class="logo-text" id="site-name">beamo <span>매뉴얼</span></div>
+  </div>
+  <div class="header-right">
+    <div class="header-search">
+      <input type="text" id="header-search-input" placeholder="검색어를 입력하세요" />
+    </div>
+    <div class="lang-switch">
+      <button data-lang="ko" class="active">한국어</button>
+      <button data-lang="en">English</button>
+      <button data-lang="ja">日本語</button>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="hero-label" id="hero-label">BEAMO OFFICIAL MANUAL</div>
+  <h1 id="hero-title">beamo 통합 매뉴얼 센터</h1>
+  <p id="hero-subtitle">버전, 환경, 기능, 사용자 유형, 단계별로 원하는 가이드를 빠르게 찾아보세요.</p>
+  <div class="hero-search">
+    <span class="search-icon">🔍</span>
+    <input type="text" id="hero-search-input" placeholder="예: 360 영상 촬영, 계정 생성, 3D 워크스페이스…" />
+  </div>
+</section>
+
+<section class="browse" id="browse-section">
+  <div class="section-head">
+    <div class="eng" id="browse-eng">BROWSE BY</div>
+    <h2 id="browse-title">원하는 기준으로 찾아보기</h2>
+    <p id="browse-desc">다섯 가지 기준 중 하나를 선택해 세부 항목을 좁혀나갈 수 있습니다.</p>
+  </div>
+
+  <div class="tabs" id="tabs"></div>
+  <div class="breadcrumb" id="breadcrumb"></div>
+
+  <div class="panel" id="panel">
+    <div class="chip-list" id="chip-list"></div>
+    <div class="result-box">
+      <div class="result-title" id="result-title"></div>
+      <div id="result-area"></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="footer-links" id="footer-links"></div>
+  <div class="footer-copy" id="footer-copy"></div>
+</footer>
+
+<script src="content-data.js"></script>
+<script src="i18n-ui.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
