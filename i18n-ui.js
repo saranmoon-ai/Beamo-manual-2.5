@@ -27,7 +27,7 @@ const UI = {
       step: { label: "단계", sub: "진행 순서별" }
     },
     values: {
-      version: { "3.0": "3.0 (최신)", "2.0": "2.0 (레거시)" },
+      version: { "3.0": "3.0 (360도 비디오 캡처)", "2.0": "2.0 (포인트 캡처)" },
       platform: { aos: "App (AOS)", web: "Web" },
       feature: {
         "getting-started": "시작하기",
@@ -71,7 +71,7 @@ const UI = {
       step: { label: "Step", sub: "By workflow order" }
     },
     values: {
-      version: { "3.0": "3.0 (Latest)", "2.0": "2.0 (Legacy)" },
+      version: { "3.0": "3.0 (360 Video Capture)", "2.0": "2.0 (Point Capture)" },
       platform: { aos: "App (AOS)", web: "Web" },
       feature: {
         "getting-started": "Getting Started",
@@ -115,7 +115,7 @@ const UI = {
       step: { label: "ステップ", sub: "進行順" }
     },
     values: {
-      version: { "3.0": "3.0（最新）", "2.0": "2.0（レガシー）" },
+      version: { "3.0": "3.0（360度動画キャプチャ）", "2.0": "2.0（ポイントキャプチャ）" },
       platform: { aos: "App (AOS)", web: "Web" },
       feature: {
         "getting-started": "はじめに",
