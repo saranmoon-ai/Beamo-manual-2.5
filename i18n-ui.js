@@ -94,7 +94,7 @@ const UI = {
     heroLabel: "BEAMO OFFICIAL MANUAL",
     heroTitle: "beamo マニュアルセンター",
     heroSubtitle: "バージョン・環境・機能・ユーザータイプ・ステップから必要なガイドを見つけましょう。",
-    heroSearchPlaceholder: "例：360度動画撮影、アカウント設定、3Dワークスペース…",
+    heroSearchPlaceholder: "例:360度動画撮影、アカウント設定、3Dワークスペース…",
     browseByEng: "BROWSE BY",
     browseByTitle: "条件から探す",
     browseByDesc: "5つの軸から1つを選んで、必要なガイドを絞り込めます。",

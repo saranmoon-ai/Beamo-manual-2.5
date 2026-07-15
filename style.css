@@ -188,6 +188,7 @@ header{
 .article-body table tr{white-space:normal;}
 .article-body th, .article-body td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top;}
 .article-body th{background:var(--bg-soft);font-weight:700;color:var(--text);}
+.article-body td[colspan]{background:var(--primary-light);font-weight:600;color:var(--text);white-space:normal;}
 .article-body a[data-goto-key]{color:var(--primary);font-weight:600;text-decoration:underline;cursor:pointer;}
 .article-body a[data-goto-key]:hover{color:var(--primary-hover);}
 
