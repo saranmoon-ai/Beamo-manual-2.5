@@ -1,7 +1,7 @@
 /* ---------- constants ---------- */
 const AXIS_VALUES = {
   version: ["3.0", "2.0"],
-  platform: ["aos", "ios", "web"],
+  platform: ["aos", "web"],
   feature: ["getting-started", "survey", "3d-workspace", "admin", "whats-new", "appendix"],
   user: ["all", "surveyor", "admin"],
   step: ["1", "2", "3", "4"]

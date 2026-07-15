@@ -21,14 +21,14 @@ const UI = {
     v2ExternalBtn: "beamo 2.0 지원 사이트 열기 ↗",
     axes: {
       version: { label: "버전", sub: "3.0 / 2.0" },
-      platform: { label: "환경", sub: "AOS · iOS · Web" },
+      platform: { label: "환경", sub: "App (AOS) · Web" },
       feature: { label: "기능", sub: "기능별 가이드" },
       user: { label: "사용자 유형", sub: "역할별 가이드" },
       step: { label: "단계", sub: "진행 순서별" }
     },
     values: {
       version: { "3.0": "3.0 (최신)", "2.0": "2.0 (레거시)" },
-      platform: { aos: "Android", ios: "iOS", web: "Web" },
+      platform: { aos: "App (AOS)", web: "Web" },
       feature: {
         "getting-started": "시작하기",
         "survey": "설문/촬영",
@@ -65,14 +65,14 @@ const UI = {
     v2ExternalBtn: "Open beamo 2.0 support site ↗",
     axes: {
       version: { label: "Version", sub: "3.0 / 2.0" },
-      platform: { label: "Platform", sub: "AOS · iOS · Web" },
+      platform: { label: "Platform", sub: "App (AOS) · Web" },
       feature: { label: "Feature", sub: "By function" },
       user: { label: "User Type", sub: "By role" },
       step: { label: "Step", sub: "By workflow order" }
     },
     values: {
       version: { "3.0": "3.0 (Latest)", "2.0": "2.0 (Legacy)" },
-      platform: { aos: "Android", ios: "iOS", web: "Web" },
+      platform: { aos: "App (AOS)", web: "Web" },
       feature: {
         "getting-started": "Getting Started",
         "survey": "Survey / Capture",
@@ -109,14 +109,14 @@ const UI = {
     v2ExternalBtn: "beamo 2.0 サポートサイトを開く ↗",
     axes: {
       version: { label: "バージョン", sub: "3.0 / 2.0" },
-      platform: { label: "環境", sub: "AOS · iOS · Web" },
+      platform: { label: "環境", sub: "App (AOS) · Web" },
       feature: { label: "機能", sub: "機能別ガイド" },
       user: { label: "ユーザータイプ", sub: "役割別ガイド" },
       step: { label: "ステップ", sub: "進行順" }
     },
     values: {
       version: { "3.0": "3.0（最新）", "2.0": "2.0（レガシー）" },
-      platform: { aos: "Android", ios: "iOS", web: "Web" },
+      platform: { aos: "App (AOS)", web: "Web" },
       feature: {
         "getting-started": "はじめに",
         "survey": "調査・撮影",
