@@ -119,7 +119,7 @@ header.scrolled{
 .logo-mark{
   height:34px;width:auto;display:block;flex-shrink:0;
 }
-.logo-text{font-weight:800;font-size:19px;letter-spacing:-0.01em;color:#fff;}
+.logo-text{font-weight:800;font-size:19px;letter-spacing:-0.01em;color:#fff;white-space:nowrap;}
 .logo-text span{color:#BFD3FF;}
 .header-right{display:flex;align-items:center;gap:20px;}
 .portal-btn{
@@ -364,7 +364,33 @@ footer{
   .portal-btn span{display:none;}
   .portal-btn{padding:9px;border-radius:50%;}
   .panel.reading-mode .result-box{padding:24px 20px;}
+
+  .logo-text{font-size:16px;}
+  .lang-switch button{font-size:11px;padding:5px 9px;}
+  .hero-label{font-size:10.5px;}
+  .hero h1{font-size:30px;}
+  .hero p{font-size:13.5px;}
+  .hero-search input{font-size:13.5px;}
+  .section-head h2{font-size:18px;}
+  .section-head p{font-size:12.5px;}
+  .tab-title{font-size:17px;}
+  .tab-sub{font-size:12px;}
 }
 @media (max-width:600px){
   .tabs{grid-template-columns:repeat(2,1fr);}
+
+  .logo-text{font-size:14px;}
+  .lang-switch button{font-size:10px;padding:4px 7px;}
+  .hero-label{font-size:9.5px;letter-spacing:0.1em;}
+  .hero h1{font-size:23px;margin-bottom:10px;}
+  .hero p{font-size:12.5px;}
+  .hero-search input{font-size:13px;}
+  .section-head h2{font-size:16.5px;}
+  .tab-title{font-size:15.5px;}
+  .tab-sub{font-size:11.5px;}
+
+  header{padding:14px 16px;}
+  .logo{gap:8px;}
+  .logo-mark{height:28px;}
+  .logo-text{font-size:13px;}
 }
