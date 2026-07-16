@@ -275,6 +275,10 @@ footer{
 .footer-links{display:flex;gap:22px;font-size:13px;color:rgba(255,255,255,0.8);flex-wrap:wrap;}
 .footer-links button,.footer-links a{font-size:13px;font-weight:600;color:rgba(255,255,255,0.8);}
 .footer-links button:hover,.footer-links a:hover{color:#fff;}
+.footer-social{display:flex;gap:14px;align-items:center;}
+.footer-social .social-link{display:flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:50%;background:rgba(255,255,255,0.12);color:rgba(255,255,255,0.85);transition:all .15s ease;}
+.footer-social .social-link svg{width:16px;height:16px;}
+.footer-social .social-link:hover{background:rgba(255,255,255,0.22);color:#fff;}
 .footer-copy{font-size:11.5px;color:rgba(255,255,255,0.55);}
 
 @media (max-width:900px){

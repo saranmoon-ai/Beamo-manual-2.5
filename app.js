@@ -15,6 +15,13 @@ const AXIS_ICON_SVG = {
   user: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><circle cx="10" cy="6.5" r="3.3" stroke-width="1.6"/><path d="M3.5 17c0-3.4 3-5.5 6.5-5.5s6.5 2.1 6.5 5.5" stroke-width="1.6" stroke-linecap="round"/></svg>',
   step: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M3 17v-3.5h3.5V17M8.5 17V9.5H12V17M13.5 17V5h3.5v12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
+const SOCIAL_ICON_SVG = {
+  LinkedIn: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v2h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.11V23h-4v-6.9c0-1.64-.03-3.76-2.29-3.76-2.29 0-2.64 1.79-2.64 3.64V23h-4V8.5z"/></svg>',
+  YouTube: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.4 3.5-6.4 3.5z"/></svg>',
+  Instagram: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="2.5" width="19" height="19" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.6" cy="6.4" r="1" fill="currentColor" stroke="none"/></svg>',
+  Facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.12 8.5H17V5.14C16.67 5.1 15.55 5 14.24 5c-2.73 0-4.6 1.66-4.6 4.7V12H6.6v3.5h3.04V23h3.62v-7.5h3.04L17 12h-3.74v-1.94c0-1 .27-1.56 1.86-1.56z"/></svg>',
+  X: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.9 10.5 21.3 2h-1.8l-6.4 7.4L8 2H2l7.8 11.3L2 22h1.8l6.8-7.9L16 22h6L13.9 10.5zm-2.4 2.8-.8-1.1L4.4 3.3h2.7l5 7.2.8 1.1 6.6 9.4h-2.7l-5.3-7.7z"/></svg>'
+};
 
 const state = {
   lang: "ko",
@@ -131,9 +138,9 @@ function renderFooter() {
   const linksEl = document.getElementById("footer-links");
   const BEAMO_HOME_INDEX = 0; // "beamo 홈페이지" / "beamo Website" / "beamo ウェブサイト" — same position in every language array
   const BEAMO_HOME_URL = "https://www.beamo.ai/";
-  const ABOUT_US_INDEX = 3; // "회사 소개" / "About Us" / "会社概要" — same position in every language array
+  const ABOUT_US_INDEX = 1; // "회사 소개" / "About Us" / "会社概要" — same position in every language array
   const ABOUT_US_URL = "https://3i.ai/";
-  const CONTACT_INDEX = 4; // "문의하기" / "Contact" / "お問い合わせ" — same position in every language array
+  const CONTACT_INDEX = 2; // "문의하기" / "Contact" / "お問い合わせ" — same position in every language array
   linksEl.innerHTML = t().footerLinks.map((l, i) => {
     if (i === BEAMO_HOME_INDEX) {
       return `<a href="${BEAMO_HOME_URL}" target="_blank" rel="noopener">${escapeHtml(l)}</a>`;
@@ -147,6 +154,12 @@ function renderFooter() {
     }
     return `<button type="button">${escapeHtml(l)}</button>`;
   }).join("");
+
+  const socialEl = document.getElementById("footer-social");
+  socialEl.innerHTML = SOCIAL_LINKS.map(s =>
+    `<a href="${s.url}" target="_blank" rel="noopener" aria-label="${escapeHtml(s.name)}" class="social-link">${SOCIAL_ICON_SVG[s.name]}</a>`
+  ).join("");
+
   document.getElementById("footer-copy").textContent = t().footerCopy;
 }
 
