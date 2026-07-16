@@ -486,9 +486,8 @@ const ARTICLES = [
     "key": "v2-getting-started",
     "version": "2.0",
     "platform": [
-      "web",
-      "aos",
-      "ios"
+      "ios",
+      "web"
     ],
     "feature": "getting-started",
     "user": [
@@ -542,7 +541,6 @@ const ARTICLES = [
     "key": "v2-capture-manual",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -570,7 +568,6 @@ const ARTICLES = [
     "key": "v2-capture-auto",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -598,7 +595,6 @@ const ARTICLES = [
     "key": "v2-capture-ble-remote",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -626,7 +622,6 @@ const ARTICLES = [
     "key": "v2-capture-interval",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -654,7 +649,6 @@ const ARTICLES = [
     "key": "v2-capture-ui",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -682,7 +676,6 @@ const ARTICLES = [
     "key": "v2-capture-preview",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -710,7 +703,6 @@ const ARTICLES = [
     "key": "v2-capture-delete-point",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -738,7 +730,6 @@ const ARTICLES = [
     "key": "v2-capture-move-point",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -766,7 +757,6 @@ const ARTICLES = [
     "key": "v2-capture-recalibrate",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -794,7 +784,6 @@ const ARTICLES = [
     "key": "v2-capture-tracking-status",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -822,7 +811,6 @@ const ARTICLES = [
     "key": "v2-capture-calibrate-plan",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "survey",
@@ -850,7 +838,6 @@ const ARTICLES = [
     "key": "v2-troubleshoot-login",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios",
       "web"
     ],
@@ -906,7 +893,6 @@ const ARTICLES = [
     "key": "v2-troubleshoot-password-recovery",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios",
       "web"
     ],
@@ -962,7 +948,6 @@ const ARTICLES = [
     "key": "v2-troubleshoot-camera-connection",
     "version": "2.0",
     "platform": [
-      "aos",
       "ios"
     ],
     "feature": "appendix",
