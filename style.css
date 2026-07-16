@@ -244,11 +244,10 @@ header{
   display:flex;align-items:center;justify-content:center;cursor:pointer;
 }
 .lightbox-overlay .lightbox-close:hover{background:rgba(255,255,255,0.24);}
-.article-body table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:12.5px;display:block;overflow-x:auto;white-space:nowrap;}
-.article-body table tr{white-space:normal;}
-.article-body th, .article-body td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top;}
+.article-body table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:12.5px;}
+.article-body th, .article-body td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top;white-space:normal;word-break:keep-all;}
 .article-body th{background:var(--bg-soft);font-weight:700;color:var(--text);}
-.article-body td[colspan]{background:var(--primary-light);font-weight:600;color:var(--text);white-space:normal;}
+.article-body td[colspan]{background:var(--primary-light);font-weight:600;color:var(--text);}
 .article-body a[data-goto-key]{color:var(--primary);font-weight:600;text-decoration:underline;cursor:pointer;}
 .article-body a[data-goto-key]:hover{color:var(--primary-hover);}
 
