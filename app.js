@@ -566,4 +566,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   applyUrlParams();
   renderAll();
+
+  /* ---------- glowing cursor (desktop pointer devices only) ---------- */
+  const canHover = window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches;
+  if (canHover) {
+    const glow = document.getElementById("cursor-glow");
+    let shown = false;
+    document.addEventListener("mousemove", (e) => {
+      glow.style.transform = `translate(${e.clientX}px, ${e.clientY}px)`;
+      if (!shown) {
+        shown = true;
+        glow.classList.add("active");
+      }
+    });
+    document.addEventListener("mouseleave", () => {
+      shown = false;
+      glow.classList.remove("active");
+    });
+  }
 });
