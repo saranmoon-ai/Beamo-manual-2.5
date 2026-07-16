@@ -522,13 +522,18 @@ function ensureLightbox() {
 
 function setViewportZoomable(zoomable) {
   const viewport = document.querySelector('meta[name="viewport"]');
-  if (!viewport) return;
-  viewport.setAttribute(
-    "content",
-    zoomable
-      ? "width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
-      : "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
-  );
+  if (viewport) {
+    viewport.setAttribute(
+      "content",
+      zoomable
+        ? "width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+        : "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+    );
+  }
+  // iOS Safari ignores user-scalable=no entirely, so the meta tag above only
+  // helps on browsers that respect it (e.g. Android Chrome). This class drives
+  // the real fix: touch-action in CSS + the touchmove/gesture guards below.
+  document.documentElement.classList.toggle("zoom-allowed", zoomable);
 }
 
 function openLightbox(src, alt) {
@@ -607,4 +612,15 @@ document.addEventListener("DOMContentLoaded", () => {
   window.addEventListener("scroll", updateHeaderScrolled, { passive: true });
 
   window.addEventListener("resize", updateMobileArticleView);
+
+  /* ---------- block pinch-zoom / double-tap-zoom on iOS Safari, which ignores
+     the viewport meta tag's user-scalable=no. Suspended while the lightbox is
+     open (see setViewportZoomable) so images can still be pinch-zoomed. ---------- */
+  const zoomIsAllowed = () => document.documentElement.classList.contains("zoom-allowed");
+  document.addEventListener("touchmove", (e) => {
+    if (e.touches.length > 1 && !zoomIsAllowed()) e.preventDefault();
+  }, { passive: false });
+  document.addEventListener("gesturestart", (e) => {
+    if (!zoomIsAllowed()) e.preventDefault();
+  });
 });

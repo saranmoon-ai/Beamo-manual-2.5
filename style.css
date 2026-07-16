@@ -19,17 +19,16 @@
   --gradient-body-bg:linear-gradient(180deg, #001C52 0%, #0046CC 35%, #2F6BFF 65%, #001C52 100%);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;}
+html{scroll-behavior:smooth;touch-action:pan-y;}
+html.zoom-allowed{touch-action:auto;}
 body{
   position:relative;overflow-x:hidden;
   font-family:'Pretendard', -apple-system, sans-serif;
   color:var(--text);
   background-color:#001C52;
-  background-image:
-    radial-gradient(rgba(255,255,255,0.35) 0.6px, transparent 0.6px),
-    var(--gradient-body-bg);
-  background-size:18px 18px, 100% 2400px;
-  background-repeat:repeat, no-repeat;
+  background-image:var(--gradient-body-bg);
+  background-size:100% 2400px;
+  background-repeat:no-repeat;
   line-height:1.6;
 }
 body::before{
