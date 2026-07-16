@@ -118,11 +118,11 @@ function snippetFor(article) {
 function renderHeader() {
   document.getElementById("site-name").innerHTML =
     state.lang === "ko"
-      ? `beamo <span>매뉴얼</span>`
+      ? `Beamo <span>매뉴얼</span>`
       : state.lang === "ja"
-      ? `beamo <span>マニュアル</span>`
-      : `beamo <span>Manual</span>`;
-  document.getElementById("header-search-input").placeholder = t().headerSearchPlaceholder;
+      ? `Beamo <span>マニュアル</span>`
+      : `Beamo <span>Manual</span>`;
+  document.getElementById("portal-btn-label").textContent = t().portalBtn;
   document.querySelectorAll(".lang-switch button").forEach(btn => {
     btn.classList.toggle("active", btn.dataset.lang === state.lang);
   });
@@ -465,7 +465,6 @@ function resetToHome() {
   state.articleKey = null;
   state.searchMode = false;
   state.searchQuery = "";
-  document.getElementById("header-search-input").value = "";
   document.getElementById("hero-search-input").value = "";
   renderAll();
   clearArticleUrl();
@@ -544,15 +543,8 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   });
 
-  const headerInput = document.getElementById("header-search-input");
   const heroInput = document.getElementById("hero-search-input");
-
-  headerInput.addEventListener("input", (e) => {
-    heroInput.value = e.target.value;
-    handleSearchInput(e.target.value);
-  });
   heroInput.addEventListener("input", (e) => {
-    headerInput.value = e.target.value;
     handleSearchInput(e.target.value);
   });
 

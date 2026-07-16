@@ -122,13 +122,14 @@ header.scrolled{
 .logo-text{font-weight:800;font-size:19px;letter-spacing:-0.01em;color:#fff;}
 .logo-text span{color:#BFD3FF;}
 .header-right{display:flex;align-items:center;gap:20px;}
-.header-search{
-  display:flex;align-items:center;gap:8px;
-  padding:9px 16px;border:1.5px solid rgba(255,255,255,0.28);border-radius:22px;
-  background:rgba(255,255,255,0.12);width:240px;
+.portal-btn{
+  display:flex;align-items:center;gap:7px;
+  padding:9px 18px;border:1.5px solid rgba(255,255,255,0.35);border-radius:22px;
+  background:rgba(255,255,255,0.14);color:#fff;font-size:13px;font-weight:700;
+  white-space:nowrap;transition:all .15s ease;
 }
-.header-search input{border:none;background:none;outline:none;font-size:13.5px;width:100%;color:#fff;font-family:inherit;}
-.header-search input::placeholder{color:rgba(255,255,255,0.65);}
+.portal-btn svg{width:15px;height:15px;stroke:currentColor;fill:none;flex-shrink:0;}
+.portal-btn:hover{background:#fff;color:var(--primary);border-color:transparent;}
 .lang-switch{display:flex;gap:4px;border:1.5px solid rgba(255,255,255,0.28);border-radius:18px;padding:3px;}
 .lang-switch button{
   font-size:12px;font-weight:600;padding:6px 12px;border-radius:14px;color:rgba(255,255,255,0.75);
@@ -360,7 +361,8 @@ footer{
 @media (max-width:900px){
   .tabs{grid-template-columns:repeat(3,1fr);}
   .panel{grid-template-columns:1fr;}
-  .header-search{display:none;}
+  .portal-btn span{display:none;}
+  .portal-btn{padding:9px;border-radius:50%;}
   .panel.reading-mode .result-box{padding:24px 20px;}
 }
 @media (max-width:600px){
