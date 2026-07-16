@@ -19,6 +19,8 @@ const UI = {
     emptyState: "왼쪽에서 항목을 선택하면 관련 가이드가 표시됩니다.",
     v2ExternalNotice: "beamo 2.0 관련 자세한 내용은 기존 지원 사이트에서 확인하실 수 있습니다.",
     v2ExternalBtn: "beamo 2.0 지원 사이트 열기 ↗",
+    shareBtn: "공유",
+    shareCopied: "링크가 복사되었습니다",
     axes: {
       version: { label: "버전", sub: "3.0 / 2.0" },
       platform: { label: "환경", sub: "App (AOS) · Web" },
@@ -63,6 +65,8 @@ const UI = {
     emptyState: "Select an item on the left to see related guides.",
     v2ExternalNotice: "For beamo 2.0 details, please visit our legacy support site.",
     v2ExternalBtn: "Open beamo 2.0 support site ↗",
+    shareBtn: "Share",
+    shareCopied: "Link copied",
     axes: {
       version: { label: "Version", sub: "3.0 / 2.0" },
       platform: { label: "Platform", sub: "App (AOS) · Web" },
@@ -107,6 +111,8 @@ const UI = {
     emptyState: "左側から項目を選択すると関連ガイドが表示されます。",
     v2ExternalNotice: "beamo 2.0 の詳細については、既存のサポートサイトをご覧ください。",
     v2ExternalBtn: "beamo 2.0 サポートサイトを開く ↗",
+    shareBtn: "共有",
+    shareCopied: "リンクをコピーしました",
     axes: {
       version: { label: "バージョン", sub: "3.0 / 2.0" },
       platform: { label: "環境", sub: "App (AOS) · Web" },

@@ -22,6 +22,7 @@ const SOCIAL_ICON_SVG = {
   Facebook: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M15.12 8.5H17V5.14C16.67 5.1 15.55 5 14.24 5c-2.73 0-4.6 1.66-4.6 4.7V12H6.6v3.5h3.04V23h3.62v-7.5h3.04L17 12h-3.74v-1.94c0-1 .27-1.56 1.86-1.56z"/></svg>',
   X: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M13.9 10.5 21.3 2h-1.8l-6.4 7.4L8 2H2l7.8 11.3L2 22h1.8l6.8-7.9L16 22h6L13.9 10.5zm-2.4 2.8-.8-1.1L4.4 3.3h2.7l5 7.2.8 1.1 6.6 9.4h-2.7l-5.3-7.7z"/></svg>'
 };
+const SHARE_ICON_SVG = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><circle cx="15" cy="4.5" r="2.2" stroke-width="1.6"/><circle cx="5" cy="10" r="2.2" stroke-width="1.6"/><circle cx="15" cy="15.5" r="2.2" stroke-width="1.6"/><path d="M6.9 8.8l6.2-3.2M6.9 11.2l6.2 3.2" stroke-width="1.6" stroke-linecap="round"/></svg>';
 
 const state = {
   lang: "ko",
@@ -334,7 +335,10 @@ function renderArticleDetail(areaEl) {
   const c = article.i18n[state.lang] || article.i18n.en;
   areaEl.innerHTML = `
     <div class="article-detail">
-      <button type="button" class="back-btn" id="detail-back-btn">← ${escapeHtml(t().backToList)}</button>
+      <div class="a-top-row">
+        <button type="button" class="back-btn" id="detail-back-btn">← ${escapeHtml(t().backToList)}</button>
+        <button type="button" class="share-btn" id="detail-share-btn">${SHARE_ICON_SVG}<span>${escapeHtml(t().shareBtn)}</span></button>
+      </div>
       <div class="a-badge-row"><span>${escapeHtml(articleBadge(article))}</span></div>
       <h3 class="a-doc-title">${escapeHtml(c.title)}</h3>
       <div class="article-body">${c.html}</div>
@@ -344,6 +348,26 @@ function renderArticleDetail(areaEl) {
   document.getElementById("detail-back-btn").addEventListener("click", () => {
     state.articleKey = null;
     renderAll();
+    clearArticleUrl();
+  });
+
+  document.getElementById("detail-share-btn").addEventListener("click", (e) => {
+    const btn = e.currentTarget;
+    const url = buildShareUrl(article.key, state.lang);
+    const showCopied = () => {
+      const original = btn.innerHTML;
+      btn.classList.add("copied");
+      btn.innerHTML = `${SHARE_ICON_SVG}<span>${escapeHtml(t().shareCopied)}</span>`;
+      setTimeout(() => {
+        btn.classList.remove("copied");
+        btn.innerHTML = original;
+      }, 1800);
+    };
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(url).then(showCopied).catch(() => window.prompt(t().shareBtn, url));
+    } else {
+      window.prompt(t().shareBtn, url);
+    }
   });
 
   // cross-article link navigation
@@ -388,6 +412,48 @@ function gotoArticle(key) {
 
   state.articleKey = key;
   renderAll();
+  pushArticleUrl(key);
+}
+
+/* ---------- shareable article URLs ---------- */
+function buildShareUrl(key, lang) {
+  const url = new URL(window.location.href);
+  url.search = "";
+  url.searchParams.set("doc", key);
+  url.searchParams.set("lang", lang || state.lang);
+  return url.toString();
+}
+
+function pushArticleUrl(key) {
+  const url = buildShareUrl(key, state.lang);
+  if (url !== window.location.href) {
+    window.history.pushState({ articleKey: key, lang: state.lang }, "", url);
+  }
+}
+
+function clearArticleUrl() {
+  const url = new URL(window.location.href);
+  if (url.search) {
+    url.search = "";
+    window.history.pushState({}, "", url.toString());
+  }
+}
+
+function applyUrlParams() {
+  const params = new URLSearchParams(window.location.search);
+  const lang = params.get("lang");
+  const doc = params.get("doc");
+  if (lang && UI[lang]) state.lang = lang;
+  if (doc) {
+    const article = getArticleByKey(doc);
+    if (article) {
+      state.searchMode = false;
+      state.searchQuery = "";
+      state.axis = "version";
+      state.value = article.version;
+      state.articleKey = doc;
+    }
+  }
 }
 
 /* ---------- top-level render ---------- */
@@ -400,6 +466,7 @@ function resetToHome() {
   document.getElementById("header-search-input").value = "";
   document.getElementById("hero-search-input").value = "";
   renderAll();
+  clearArticleUrl();
 }
 
 function renderAll() {
@@ -489,5 +556,12 @@ document.addEventListener("DOMContentLoaded", () => {
 
   document.getElementById("logo-home").addEventListener("click", resetToHome);
 
+  window.addEventListener("popstate", () => {
+    state.articleKey = null;
+    applyUrlParams();
+    renderAll();
+  });
+
+  applyUrlParams();
   renderAll();
 });
