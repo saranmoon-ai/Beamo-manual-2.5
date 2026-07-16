@@ -584,4 +584,12 @@ document.addEventListener("DOMContentLoaded", () => {
       glow.classList.remove("active");
     });
   }
+
+  /* ---------- header: frosted background once scrolled past the hero top ---------- */
+  const headerEl = document.querySelector("header");
+  const updateHeaderScrolled = () => {
+    headerEl.classList.toggle("scrolled", window.scrollY > 8);
+  };
+  updateHeaderScrolled();
+  window.addEventListener("scroll", updateHeaderScrolled, { passive: true });
 });
