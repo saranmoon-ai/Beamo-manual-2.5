@@ -4,7 +4,6 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "aos",
-      "ios",
       "web"
     ],
     "feature": "getting-started",
@@ -33,8 +32,7 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "web",
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "getting-started",
     "user": [
@@ -61,8 +59,7 @@ const ARTICLES = [
     "key": "s1-3",
     "version": "3.0",
     "platform": [
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "getting-started",
     "user": [
@@ -89,8 +86,7 @@ const ARTICLES = [
     "key": "s2-1",
     "version": "3.0",
     "platform": [
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "survey",
     "user": [
@@ -118,8 +114,7 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "web",
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "survey",
     "user": [
@@ -148,8 +143,7 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "web",
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "3d-workspace",
     "user": [
@@ -204,8 +198,7 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "web",
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "3d-workspace",
     "user": [
@@ -259,8 +252,7 @@ const ARTICLES = [
     "key": "f-360video",
     "version": "3.0",
     "platform": [
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "whats-new",
     "user": [
@@ -287,8 +279,7 @@ const ARTICLES = [
     "key": "f-fieldcamera",
     "version": "3.0",
     "platform": [
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "whats-new",
     "user": [
@@ -316,8 +307,7 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "web",
-      "aos",
-      "ios"
+      "aos"
     ],
     "feature": "whats-new",
     "user": [
@@ -345,7 +335,6 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "aos",
-      "ios",
       "web"
     ],
     "feature": "whats-new",
@@ -429,7 +418,6 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "aos",
-      "ios",
       "web"
     ],
     "feature": "appendix",
@@ -458,7 +446,6 @@ const ARTICLES = [
     "version": "3.0",
     "platform": [
       "aos",
-      "ios",
       "web"
     ],
     "feature": "appendix",
