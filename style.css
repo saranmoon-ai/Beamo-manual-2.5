@@ -109,8 +109,8 @@ header{
   background:transparent;
 }
 .hero-watermark{
-  position:absolute;z-index:1;top:50%;right:-60px;transform:translateY(-50%);
-  width:520px;height:520px;pointer-events:none;
+  position:absolute;z-index:1;top:50%;right:-40px;transform:translateY(-50%);
+  width:300px;height:300px;pointer-events:none;
   -webkit-mask-image:url("beamo-mark-white.png");
   mask-image:url("beamo-mark-white.png");
   -webkit-mask-size:contain;mask-size:contain;
