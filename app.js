@@ -30,7 +30,8 @@ const state = {
   value: null,
   articleKey: null,
   searchMode: false,
-  searchQuery: ""
+  searchQuery: "",
+  browsing: false
 };
 
 /* ---------- helpers ---------- */
@@ -132,7 +133,18 @@ function renderHero() {
   document.getElementById("hero-label").textContent = t().heroLabel;
   document.getElementById("hero-title").textContent = t().heroTitle;
   document.getElementById("hero-subtitle").textContent = t().heroSubtitle;
-  document.getElementById("hero-search-input").placeholder = t().heroSearchPlaceholder;
+
+  const heroInput = document.getElementById("hero-search-input");
+  const floatingInput = document.getElementById("floating-search-input");
+  heroInput.placeholder = t().heroSearchPlaceholder;
+  floatingInput.placeholder = t().heroSearchPlaceholder;
+  if (document.activeElement !== heroInput) heroInput.value = state.searchQuery;
+  if (document.activeElement !== floatingInput) floatingInput.value = state.searchQuery;
+}
+
+/* ---------- compact hero once the user starts browsing ---------- */
+function updateBrowsingMode() {
+  document.body.classList.toggle("browsing", state.browsing);
 }
 
 function renderFooter() {
@@ -191,6 +203,7 @@ function renderTabs() {
       state.value = null;
       state.articleKey = null;
       state.searchMode = false;
+      state.browsing = true;
       renderAll();
     });
   });
@@ -454,6 +467,7 @@ function applyUrlParams() {
       state.axis = "version";
       state.value = article.version;
       state.articleKey = doc;
+      state.browsing = true;
     }
   }
 }
@@ -471,7 +485,9 @@ function resetToHome() {
   state.articleKey = null;
   state.searchMode = false;
   state.searchQuery = "";
+  state.browsing = false;
   document.getElementById("hero-search-input").value = "";
+  document.getElementById("floating-search-input").value = "";
   renderAll();
   clearArticleUrl();
 }
@@ -487,12 +503,16 @@ function renderAll() {
   renderResultArea();
   renderFooter();
   updateMobileArticleView();
+  updateBrowsingMode();
 }
 
 function handleSearchInput(value) {
   state.searchQuery = value;
   state.searchMode = value.trim().length > 0;
-  if (state.searchMode) state.articleKey = null;
+  if (state.searchMode) {
+    state.articleKey = null;
+    state.browsing = true;
+  }
   renderAll();
 }
 
@@ -572,6 +592,14 @@ document.addEventListener("DOMContentLoaded", () => {
   const heroInput = document.getElementById("hero-search-input");
   heroInput.addEventListener("input", (e) => {
     handleSearchInput(e.target.value);
+  });
+
+  const floatingInput = document.getElementById("floating-search-input");
+  floatingInput.addEventListener("input", (e) => {
+    handleSearchInput(e.target.value);
+  });
+  document.getElementById("floating-search-btn").addEventListener("click", () => {
+    floatingInput.focus();
   });
 
   document.getElementById("logo-home").addEventListener("click", resetToHome);
