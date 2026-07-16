@@ -37,7 +37,10 @@ body{
   position:relative;overflow-x:hidden;
   font-family:'Pretendard', -apple-system, sans-serif;
   color:var(--text);
-  background:var(--gradient-brand);
+  background-color:#2F6BFF;
+  background-image:var(--gradient-brand);
+  background-size:100% 2400px;
+  background-repeat:no-repeat;
   line-height:1.6;
 }
 body::before{
