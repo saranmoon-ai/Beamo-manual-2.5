@@ -64,11 +64,25 @@ body::after{
   background:#7fa8ff;filter:blur(65px);opacity:0.28;mix-blend-mode:screen;
   animation:pageBlobC 15s ease-in-out infinite;
 }
+.page-blob-4{
+  position:absolute;z-index:-1;pointer-events:none;
+  bottom:40px;right:-150px;width:480px;height:480px;border-radius:50%;
+  background:#2F6BFF;filter:blur(70px);opacity:0.4;mix-blend-mode:screen;
+  animation:pageBlobD 19s ease-in-out infinite;
+}
+.page-blob-5{
+  position:absolute;z-index:-1;pointer-events:none;
+  bottom:-90px;left:-130px;width:420px;height:420px;border-radius:50%;
+  background:#2F6BFF;filter:blur(65px);opacity:0.36;mix-blend-mode:screen;
+  animation:pageBlobE 16s ease-in-out infinite;
+}
 @keyframes pageBlobA{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-40px,35px) scale(1.12);}}
 @keyframes pageBlobB{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(35px,-30px) scale(1.08);}}
 @keyframes pageBlobC{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-25px,-30px) scale(0.92);}}
+@keyframes pageBlobD{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(-30px,-25px) scale(1.1);}}
+@keyframes pageBlobE{0%,100%{transform:translate(0,0) scale(1);}50%{transform:translate(30px,20px) scale(0.94);}}
 @media (prefers-reduced-motion: reduce){
-  body::before,body::after,.page-blob-3{animation:none !important;}
+  body::before,body::after,.page-blob-3,.page-blob-4,.page-blob-5{animation:none !important;}
 }
 a{text-decoration:none;color:inherit;}
 button{font-family:inherit;cursor:pointer;border:none;background:none;}
