@@ -149,15 +149,27 @@ function renderHero() {
   document.getElementById("hero-label").textContent = t().heroLabel;
   document.getElementById("hero-title").textContent = t().heroTitle;
   document.getElementById("hero-subtitle").textContent = t().heroSubtitle;
-  document.getElementById("hero-search-submit-btn").textContent = t().searchBtn;
-  document.getElementById("floating-search-submit-btn").textContent = t().searchBtn;
+
+  // defensive lookups: a stale cached HTML/JS pair (e.g. right after a deploy,
+  // while the CDN still serves mismatched files to different requests) should
+  // degrade gracefully instead of throwing and blanking out everything below
+  // the hero (tabs/breadcrumb/results), which never gets a chance to render
+  // once an uncaught exception stops renderAll() partway through.
+  const heroSubmitBtn = document.getElementById("hero-search-submit-btn");
+  const floatingSubmitBtn = document.getElementById("floating-search-submit-btn");
+  if (heroSubmitBtn) heroSubmitBtn.textContent = t().searchBtn;
+  if (floatingSubmitBtn) floatingSubmitBtn.textContent = t().searchBtn;
 
   const heroInput = document.getElementById("hero-search-input");
   const floatingInput = document.getElementById("floating-search-input");
-  typePlaceholder(heroInput, t().heroSearchPlaceholder);
-  typePlaceholder(floatingInput, t().heroSearchPlaceholder);
-  if (document.activeElement !== heroInput) heroInput.value = state.searchQuery;
-  if (document.activeElement !== floatingInput) floatingInput.value = state.searchQuery;
+  if (heroInput) {
+    typePlaceholder(heroInput, t().heroSearchPlaceholder);
+    if (document.activeElement !== heroInput) heroInput.value = state.searchQuery;
+  }
+  if (floatingInput) {
+    typePlaceholder(floatingInput, t().heroSearchPlaceholder);
+    if (document.activeElement !== floatingInput) floatingInput.value = state.searchQuery;
+  }
 }
 
 /* ---------- compact hero once the user starts browsing ---------- */
@@ -611,20 +623,23 @@ document.addEventListener("DOMContentLoaded", () => {
   const floatingInput = document.getElementById("floating-search-input");
   const floatingBtn = document.getElementById("floating-search-btn");
 
-  heroInput.addEventListener("keydown", (e) => {
+  // optional-chained: a stale cached HTML/JS pair right after a deploy could
+  // momentarily be missing one of these elements — skip that binding instead
+  // of throwing and aborting every listener (and the first renderAll()) below it.
+  heroInput?.addEventListener("keydown", (e) => {
     if (e.key === "Enter") { e.preventDefault(); commitSearch(heroInput.value); }
   });
-  document.getElementById("hero-search-submit-btn").addEventListener("click", () => {
+  document.getElementById("hero-search-submit-btn")?.addEventListener("click", () => {
     commitSearch(heroInput.value);
   });
 
-  floatingInput.addEventListener("keydown", (e) => {
+  floatingInput?.addEventListener("keydown", (e) => {
     if (e.key === "Enter") { e.preventDefault(); commitSearch(floatingInput.value); }
   });
-  document.getElementById("floating-search-submit-btn").addEventListener("click", () => {
+  document.getElementById("floating-search-submit-btn")?.addEventListener("click", () => {
     commitSearch(floatingInput.value);
   });
-  floatingBtn.addEventListener("click", () => floatingInput.focus());
+  floatingBtn?.addEventListener("click", () => floatingInput?.focus());
 
   document.getElementById("logo-home").addEventListener("click", resetToHome);
 
