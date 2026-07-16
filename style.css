@@ -30,6 +30,7 @@
   --bg:#ffffff;
   --bg-soft:#f8f9fb;
   --gradient-brand:linear-gradient(135deg, #001C52 0%, #0046CC 55%, #2F6BFF 100%);
+  --gradient-body-bg:linear-gradient(180deg, #001C52 0%, #0046CC 55%, #2F6BFF 100%);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
 html{scroll-behavior:smooth;}
@@ -38,7 +39,7 @@ body{
   font-family:'Pretendard', -apple-system, sans-serif;
   color:var(--text);
   background-color:#2F6BFF;
-  background-image:var(--gradient-brand);
+  background-image:var(--gradient-body-bg);
   background-size:100% 2400px;
   background-repeat:no-repeat;
   line-height:1.6;
