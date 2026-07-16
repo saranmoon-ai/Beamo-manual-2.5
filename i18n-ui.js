@@ -138,3 +138,9 @@ const V2_SUPPORT_URL = {
   en: "https://support.beamo.ai/hc/en-us",
   ja: "https://support.beamo.ai/hc/ja"
 };
+
+const CONTACT_URL = {
+  ko: "https://support.beamo.ai/hc/ko/requests/new",
+  en: "https://support.beamo.ai/hc/en-us/requests/new",
+  ja: "https://support.beamo.ai/hc/ja/requests/new"
+};

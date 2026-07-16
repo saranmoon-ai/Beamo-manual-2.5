@@ -6,7 +6,7 @@ const AXIS_VALUES = {
   user: ["all", "surveyor", "admin"],
   step: ["1", "2", "3", "4"]
 };
-const AXIS_ORDER = ["version", "platform", "feature", "user", "step"];
+const AXIS_ORDER = ["feature", "step", "version", "platform", "user"];
 /* simple single-color line icons (currentColor) replacing the old emoji set */
 const AXIS_ICON_SVG = {
   version: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M10 3h5.5a1.5 1.5 0 0 1 1.5 1.5V10L9.5 17.5a1.5 1.5 0 0 1-2.12 0L3 13.12a1.5 1.5 0 0 1 0-2.12L10 3Z" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="13" cy="7" r="1.1" fill="currentColor" stroke="none"/></svg>',
@@ -133,12 +133,17 @@ function renderFooter() {
   const BEAMO_HOME_URL = "https://www.beamo.ai/";
   const ABOUT_US_INDEX = 3; // "회사 소개" / "About Us" / "会社概要" — same position in every language array
   const ABOUT_US_URL = "https://3i.ai/";
+  const CONTACT_INDEX = 4; // "문의하기" / "Contact" / "お問い合わせ" — same position in every language array
   linksEl.innerHTML = t().footerLinks.map((l, i) => {
     if (i === BEAMO_HOME_INDEX) {
       return `<a href="${BEAMO_HOME_URL}" target="_blank" rel="noopener">${escapeHtml(l)}</a>`;
     }
     if (i === ABOUT_US_INDEX) {
       return `<a href="${ABOUT_US_URL}" target="_blank" rel="noopener">${escapeHtml(l)}</a>`;
+    }
+    if (i === CONTACT_INDEX) {
+      const url = CONTACT_URL[state.lang] || CONTACT_URL.en;
+      return `<a href="${url}" target="_blank" rel="noopener">${escapeHtml(l)}</a>`;
     }
     return `<button type="button">${escapeHtml(l)}</button>`;
   }).join("");
