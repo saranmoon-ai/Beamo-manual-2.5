@@ -609,24 +609,22 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const heroInput = document.getElementById("hero-search-input");
   const floatingInput = document.getElementById("floating-search-input");
-  const heroBtn = document.getElementById("hero-search-btn");
   const floatingBtn = document.getElementById("floating-search-btn");
 
   heroInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") { e.preventDefault(); commitSearch(heroInput.value); }
   });
-  heroBtn.addEventListener("click", () => commitSearch(heroInput.value));
+  document.getElementById("hero-search-submit-btn").addEventListener("click", () => {
+    commitSearch(heroInput.value);
+  });
 
   floatingInput.addEventListener("keydown", (e) => {
     if (e.key === "Enter") { e.preventDefault(); commitSearch(floatingInput.value); }
   });
-  floatingBtn.addEventListener("click", () => {
-    if (document.activeElement === floatingInput) {
-      commitSearch(floatingInput.value);
-    } else {
-      floatingInput.focus();
-    }
+  document.getElementById("floating-search-submit-btn").addEventListener("click", () => {
+    commitSearch(floatingInput.value);
   });
+  floatingBtn.addEventListener("click", () => floatingInput.focus());
 
   document.getElementById("logo-home").addEventListener("click", resetToHome);
 
