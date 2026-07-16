@@ -19,7 +19,7 @@
   --gradient-body-bg:linear-gradient(180deg, #001C52 0%, #0046CC 35%, #2F6BFF 65%, #001C52 100%);
 }
 *{box-sizing:border-box;margin:0;padding:0;}
-html{scroll-behavior:smooth;touch-action:pan-y;overflow-x:hidden;overscroll-behavior-x:none;}
+html{scroll-behavior:smooth;touch-action:pan-y;overscroll-behavior-x:none;}
 html.zoom-allowed{touch-action:auto;}
 html.zoom-allowed body{touch-action:auto;}
 body{
