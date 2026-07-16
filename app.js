@@ -520,17 +520,30 @@ function ensureLightbox() {
   return lb;
 }
 
+function setViewportZoomable(zoomable) {
+  const viewport = document.querySelector('meta[name="viewport"]');
+  if (!viewport) return;
+  viewport.setAttribute(
+    "content",
+    zoomable
+      ? "width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes"
+      : "width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"
+  );
+}
+
 function openLightbox(src, alt) {
   const lb = ensureLightbox();
   const img = document.getElementById("img-lightbox-img");
   img.src = src;
   img.alt = alt || "";
   lb.classList.add("open");
+  setViewportZoomable(true);
 }
 
 function closeLightbox() {
   const lb = document.getElementById("img-lightbox");
   if (lb) lb.classList.remove("open");
+  setViewportZoomable(false);
 }
 
 /* ---------- init ---------- */
