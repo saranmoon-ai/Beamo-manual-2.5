@@ -506,7 +506,7 @@ function renderAll() {
   updateBrowsingMode();
 }
 
-function handleSearchInput(value) {
+function commitSearch(value) {
   state.searchQuery = value;
   state.searchMode = value.trim().length > 0;
   if (state.searchMode) {
@@ -590,16 +590,24 @@ document.addEventListener("DOMContentLoaded", () => {
   });
 
   const heroInput = document.getElementById("hero-search-input");
-  heroInput.addEventListener("input", (e) => {
-    handleSearchInput(e.target.value);
-  });
-
   const floatingInput = document.getElementById("floating-search-input");
-  floatingInput.addEventListener("input", (e) => {
-    handleSearchInput(e.target.value);
+  const heroBtn = document.getElementById("hero-search-btn");
+  const floatingBtn = document.getElementById("floating-search-btn");
+
+  heroInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); commitSearch(heroInput.value); }
   });
-  document.getElementById("floating-search-btn").addEventListener("click", () => {
-    floatingInput.focus();
+  heroBtn.addEventListener("click", () => commitSearch(heroInput.value));
+
+  floatingInput.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") { e.preventDefault(); commitSearch(floatingInput.value); }
+  });
+  floatingBtn.addEventListener("click", () => {
+    if (document.activeElement === floatingInput) {
+      commitSearch(floatingInput.value);
+    } else {
+      floatingInput.focus();
+    }
   });
 
   document.getElementById("logo-home").addEventListener("click", resetToHome);
