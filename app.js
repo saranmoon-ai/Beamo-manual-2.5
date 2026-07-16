@@ -178,8 +178,10 @@ function renderTabs() {
     const ax = t().axes[axis];
     return `<button type="button" class="tab-btn ${active}" data-axis="${axis}">
       <span class="tab-icon">${AXIS_ICON_SVG[axis]}</span>
-      <span class="tab-title">${escapeHtml(ax.label)}</span>
-      <span class="tab-sub">${escapeHtml(ax.sub)}</span>
+      <span class="tab-content">
+        <span class="tab-title">${escapeHtml(ax.label)}</span>
+        <span class="tab-sub">${escapeHtml(ax.sub)}</span>
+      </span>
     </button>`;
   }).join("");
 
