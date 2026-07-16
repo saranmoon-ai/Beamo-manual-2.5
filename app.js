@@ -458,6 +458,12 @@ function applyUrlParams() {
   }
 }
 
+/* ---------- mobile: distraction-free article reading view ---------- */
+function updateMobileArticleView() {
+  const isMobile = window.matchMedia && window.matchMedia("(max-width: 760px)").matches;
+  document.body.classList.toggle("mobile-article-view", isMobile && !!state.articleKey);
+}
+
 /* ---------- top-level render ---------- */
 function resetToHome() {
   state.axis = "version";
@@ -471,6 +477,7 @@ function resetToHome() {
 }
 
 function renderAll() {
+  document.documentElement.lang = state.lang;
   renderHeader();
   renderHero();
   renderSectionHead();
@@ -479,6 +486,7 @@ function renderAll() {
   renderChipList();
   renderResultArea();
   renderFooter();
+  updateMobileArticleView();
 }
 
 function handleSearchInput(value) {
@@ -584,4 +592,6 @@ document.addEventListener("DOMContentLoaded", () => {
   };
   updateHeaderScrolled();
   window.addEventListener("scroll", updateHeaderScrolled, { passive: true });
+
+  window.addEventListener("resize", updateMobileArticleView);
 });

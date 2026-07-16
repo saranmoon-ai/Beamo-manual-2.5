@@ -322,7 +322,9 @@ header.scrolled{
 }
 .lightbox-overlay .lightbox-close:hover{background:rgba(255,255,255,0.24);}
 .article-body table{width:100%;border-collapse:collapse;margin:12px 0 20px;font-size:12.5px;}
-.article-body th, .article-body td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top;white-space:normal;word-break:keep-all;}
+.article-body th, .article-body td{border:1px solid var(--border);padding:9px 11px;text-align:left;vertical-align:top;white-space:normal;word-break:keep-all;overflow-wrap:break-word;}
+/* Japanese prose has no spaces to break at — keep-all would refuse to wrap at all and blow out the table width, so let Japanese use normal CJK line-breaking instead */
+html:lang(ja) .article-body th, html:lang(ja) .article-body td{word-break:normal;}
 .article-body th{background:var(--bg-soft);font-weight:700;color:var(--text);}
 .article-body td[colspan]{background:var(--primary-light);font-weight:600;color:var(--text);}
 .article-body a[data-goto-key]{color:var(--primary);font-weight:600;text-decoration:underline;cursor:pointer;}
@@ -395,4 +397,40 @@ footer{
   .logo{gap:8px;}
   .logo-mark{height:28px;}
   .logo-text{font-size:13px;}
+}
+
+/* ---------- Mobile: distraction-free article reading page ---------- */
+@media (max-width:760px){
+  body.mobile-article-view{background-color:#fff;background-image:none;}
+  body.mobile-article-view::before,
+  body.mobile-article-view::after,
+  body.mobile-article-view .page-blob-3,
+  body.mobile-article-view .page-blob-4,
+  body.mobile-article-view .page-blob-5,
+  body.mobile-article-view .cursor-glow,
+  body.mobile-article-view header,
+  body.mobile-article-view .hero,
+  body.mobile-article-view .section-head,
+  body.mobile-article-view .tabs,
+  body.mobile-article-view .breadcrumb,
+  body.mobile-article-view footer{
+    display:none;
+  }
+  body.mobile-article-view .browse{padding:0;max-width:none;}
+  body.mobile-article-view .panel{gap:0;}
+  body.mobile-article-view .panel.reading-mode .result-box{
+    border:none;border-radius:0;box-shadow:none;
+    padding:20px 18px 100px;max-width:none;min-height:100vh;background:#fff;
+  }
+  body.mobile-article-view .article-detail{border-radius:0;}
+  body.mobile-article-view .a-top-row{
+    position:fixed;left:0;right:0;bottom:0;z-index:200;
+    margin:0;padding:12px 16px;background:#fff;
+    box-shadow:0 -6px 20px rgba(0,20,70,0.14);
+  }
+  body.mobile-article-view .back-btn{
+    flex:1;justify-content:center;padding:12px;margin:0;
+    background:var(--primary-light);border-radius:10px;color:var(--primary);
+  }
+  body.mobile-article-view .share-btn{flex-shrink:0;}
 }
