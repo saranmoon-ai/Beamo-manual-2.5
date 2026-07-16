@@ -129,15 +129,33 @@ function renderHeader() {
   });
 }
 
+/* types the placeholder out character by character; re-typing is skipped if
+   this input is already showing (or mid-typing) the same text, so repeated
+   renderAll() calls (e.g. every keystroke commit) don't restart the effect */
+function typePlaceholder(el, text, speed) {
+  if (el.dataset.typedText === text) return;
+  el.dataset.typedText = text;
+  clearInterval(el._typeInterval);
+  let i = 0;
+  el.placeholder = "";
+  el._typeInterval = setInterval(() => {
+    i++;
+    el.placeholder = text.slice(0, i) + (i < text.length ? "▏" : "");
+    if (i >= text.length) clearInterval(el._typeInterval);
+  }, speed || 65);
+}
+
 function renderHero() {
   document.getElementById("hero-label").textContent = t().heroLabel;
   document.getElementById("hero-title").textContent = t().heroTitle;
   document.getElementById("hero-subtitle").textContent = t().heroSubtitle;
+  document.getElementById("hero-search-submit-btn").textContent = t().searchBtn;
+  document.getElementById("floating-search-submit-btn").textContent = t().searchBtn;
 
   const heroInput = document.getElementById("hero-search-input");
   const floatingInput = document.getElementById("floating-search-input");
-  heroInput.placeholder = t().heroSearchPlaceholder;
-  floatingInput.placeholder = t().heroSearchPlaceholder;
+  typePlaceholder(heroInput, t().heroSearchPlaceholder);
+  typePlaceholder(floatingInput, t().heroSearchPlaceholder);
   if (document.activeElement !== heroInput) heroInput.value = state.searchQuery;
   if (document.activeElement !== floatingInput) floatingInput.value = state.searchQuery;
 }

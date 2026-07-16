@@ -188,9 +188,13 @@ header.scrolled{
   transition:opacity .45s ease, max-height .6s ease, margin .6s ease, padding .6s ease, border-width .45s ease, box-shadow .45s ease, visibility 0s linear 0s;
 }
 .hero-search input{flex:1;border:none;outline:none;font-size:14.5px;font-family:inherit;}
-.hero-search .search-icon{display:flex;align-items:center;color:var(--caption);flex-shrink:0;padding:0;transition:color .15s ease;}
-.hero-search .search-icon:hover{color:var(--primary);}
+.hero-search .search-icon{display:flex;align-items:center;color:var(--caption);flex-shrink:0;}
 .hero-search .search-icon svg{width:18px;height:18px;stroke:currentColor;fill:none;}
+.hero-search-submit{
+  flex-shrink:0;background:var(--primary);color:#fff;font-size:13.5px;font-weight:700;
+  padding:10px 22px;border-radius:11px;transition:background .15s ease;
+}
+.hero-search-submit:hover{background:var(--primary-hover);}
 
 /* ---------- Hero: compact state once the user starts browsing ---------- */
 body.browsing .hero{padding:20px 40px;text-align:left;}
@@ -218,7 +222,7 @@ body.browsing .floating-search{opacity:1;transform:translateY(0) scale(1);pointe
 body.mobile-article-view .floating-search{display:none;}
 .floating-search:hover,
 .floating-search:focus-within{
-  width:290px;box-shadow:0 14px 38px rgba(0,20,70,0.3);
+  width:360px;box-shadow:0 14px 38px rgba(0,20,70,0.3);
 }
 .floating-search-btn{
   width:52px;height:52px;flex-shrink:0;
@@ -234,8 +238,19 @@ body.mobile-article-view .floating-search{display:none;}
 }
 .floating-search:hover .floating-search-input,
 .floating-search:focus-within .floating-search-input{
-  opacity:1;padding-right:18px;
+  opacity:1;padding-right:10px;
 }
+.floating-search-submit{
+  flex-shrink:0;background:var(--primary);color:#fff;font-size:13px;font-weight:700;
+  padding:0 18px;height:38px;margin-right:7px;border-radius:9px;
+  width:0;opacity:0;overflow:hidden;padding-left:0;padding-right:0;margin-right:0;
+  transition:opacity .2s ease, background .15s ease;
+}
+.floating-search:hover .floating-search-submit,
+.floating-search:focus-within .floating-search-submit{
+  width:auto;opacity:1;padding:0 18px;margin-right:7px;
+}
+.floating-search-submit:hover{background:var(--primary-hover);}
 @media (prefers-reduced-motion: reduce){
   .hero,.hero-watermark,.hero-label,.hero h1,.hero p,.hero-search,.floating-search,.floating-search-input{transition:none !important;}
 }
