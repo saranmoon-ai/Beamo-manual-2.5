@@ -404,6 +404,8 @@ body.browsing .panel{display:grid;}
 .article-body h4{font-size:14px;font-weight:700;color:var(--text);margin:18px 0 8px;}
 .article-body p{margin-bottom:14px;line-height:1.8;}
 .article-body ul, .article-body ol{margin:0 0 14px 22px;}
+.article-body ul{list-style:disc;}
+.article-body ul ul{list-style:circle;margin-bottom:0;}
 .article-body li{margin-bottom:8px;line-height:1.8;}
 .article-body strong{color:var(--text);font-weight:700;}
 .article-body hr{border:none;border-top:1px solid var(--border);margin:26px 0;}
