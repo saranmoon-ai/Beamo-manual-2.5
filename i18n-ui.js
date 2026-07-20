@@ -23,8 +23,8 @@ const UI = {
     searchResultsFor: "검색어",
     searchResultsCount: "건의 결과",
     emptyState: "왼쪽에서 항목을 선택하면 관련 가이드가 표시됩니다.",
-    v2ExternalNotice: "beamo 2.0 관련 자세한 내용은 기존 지원 사이트에서 확인하실 수 있습니다.",
-    v2ExternalBtn: "beamo 2.0 지원 사이트 열기 ↗",
+    v2ExternalNotice: "Beamo 2.0 관련 자세한 내용은 기존 지원 사이트에서 확인하실 수 있습니다.",
+    v2ExternalBtn: "Beamo 2.0 지원 사이트 열기 ↗",
     shareBtn: "공유",
     shareCopied: "링크가 복사되었습니다",
     axes: {
@@ -55,7 +55,7 @@ const UI = {
       },
       step: { "1": "1단계 · 준비", "2": "2단계 · 촬영", "3": "3단계 · 활용", "4": "4단계 · 관리" }
     },
-    footerLinks: ["beamo 홈페이지", "회사 소개", "문의하기"],
+    footerLinks: ["Beamo 홈페이지", "회사 소개", "문의하기"],
     footerCopy: "© 2026 3i Inc. All rights reserved."
   },
   en: {
@@ -82,8 +82,8 @@ const UI = {
     searchResultsFor: "Search",
     searchResultsCount: "results",
     emptyState: "Select an item on the left to see related guides.",
-    v2ExternalNotice: "For beamo 2.0 details, please visit our legacy support site.",
-    v2ExternalBtn: "Open beamo 2.0 support site ↗",
+    v2ExternalNotice: "For Beamo 2.0 details, please visit our legacy support site.",
+    v2ExternalBtn: "Open Beamo 2.0 support site ↗",
     shareBtn: "Share",
     shareCopied: "Link copied",
     axes: {
@@ -114,7 +114,7 @@ const UI = {
       },
       step: { "1": "Step 1 · Prepare", "2": "Step 2 · Capture", "3": "Step 3 · Use", "4": "Step 4 · Manage" }
     },
-    footerLinks: ["beamo Website", "About Us", "Contact"],
+    footerLinks: ["Beamo Website", "About Us", "Contact"],
     footerCopy: "© 2026 3i Inc. All rights reserved."
   },
   ja: {
@@ -141,8 +141,8 @@ const UI = {
     searchResultsFor: "検索",
     searchResultsCount: "件の結果",
     emptyState: "左側から項目を選択すると関連ガイドが表示されます。",
-    v2ExternalNotice: "beamo 2.0 の詳細については、既存のサポートサイトをご覧ください。",
-    v2ExternalBtn: "beamo 2.0 サポートサイトを開く ↗",
+    v2ExternalNotice: "Beamo 2.0 の詳細については、既存のサポートサイトをご覧ください。",
+    v2ExternalBtn: "Beamo 2.0 サポートサイトを開く ↗",
     shareBtn: "共有",
     shareCopied: "リンクをコピーしました",
     axes: {
@@ -173,7 +173,7 @@ const UI = {
       },
       step: { "1": "ステップ1・準備", "2": "ステップ2・撮影", "3": "ステップ3・活用", "4": "ステップ4・管理" }
     },
-    footerLinks: ["beamo ウェブサイト", "会社概要", "お問い合わせ"],
+    footerLinks: ["Beamo ウェブサイト", "会社概要", "お問い合わせ"],
     footerCopy: "© 2026 3i Inc. All rights reserved."
   }
 };

@@ -183,7 +183,7 @@ function updateBrowsingMode() {
 
 function renderFooter() {
   const linksEl = document.getElementById("footer-links");
-  const BEAMO_HOME_INDEX = 0; // "beamo 홈페이지" / "beamo Website" / "beamo ウェブサイト" — same position in every language array
+  const BEAMO_HOME_INDEX = 0; // "Beamo 홈페이지" / "Beamo Website" / "Beamo ウェブサイト" — same position in every language array
   const BEAMO_HOME_URL = "https://www.beamo.ai/";
   const ABOUT_US_INDEX = 1; // "회사 소개" / "About Us" / "会社概要" — same position in every language array
   const ABOUT_US_URL = "https://3i.ai/";
@@ -378,7 +378,7 @@ function renderResultArea() {
     return;
   }
 
-  // beamo 2.0 external notice — only relevant when browsing by version = 2.0
+  // Beamo 2.0 external notice — only relevant when browsing by version = 2.0
   let extraBox = "";
   if (state.axis === "version" && state.value === "2.0") {
     const url = V2_SUPPORT_URL[state.lang] || V2_SUPPORT_URL.en;
