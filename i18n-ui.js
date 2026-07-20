@@ -37,7 +37,7 @@ const UI = {
       platform: { aos: "App (AOS)", ios: "App (iOS)", web: "Web" },
       feature: {
         "getting-started": "시작하기",
-        "survey": "설문/촬영",
+        "survey": "서베이/촬영",
         "3d-workspace": "3D 워크스페이스",
         "admin": "관리자 설정",
         "whats-new": "새 기능",
@@ -137,7 +137,7 @@ const UI = {
       platform: { aos: "App (AOS)", ios: "App (iOS)", web: "Web" },
       feature: {
         "getting-started": "はじめに",
-        "survey": "調査・撮影",
+        "survey": "サーベイ・撮影",
         "3d-workspace": "3Dワークスペース",
         "admin": "管理者設定",
         "whats-new": "新機能",

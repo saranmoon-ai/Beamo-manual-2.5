@@ -31,7 +31,8 @@ const state = {
   articleKey: null,
   searchMode: false,
   searchQuery: "",
-  browsing: false
+  browsing: false,
+  quickManualKey: null
 };
 
 /* ---------- helpers ---------- */
@@ -222,11 +223,21 @@ function renderQuickManualRow() {
   if (surveyorSubEl) surveyorSubEl.textContent = t().quickManualSurveyorSub;
   if (adminTitleEl) adminTitleEl.textContent = t().quickManualTitle;
   if (adminSubEl) adminSubEl.textContent = t().quickManualAdminSub;
+
+  document.querySelectorAll(".qm-btn").forEach(btn => {
+    btn.classList.toggle("active", state.quickManualKey === btn.dataset.key);
+  });
 }
 
 /* ---------- render: tabs / breadcrumb ---------- */
 function renderTabs() {
   const tabsEl = document.getElementById("tabs");
+  if (state.quickManualKey) {
+    tabsEl.innerHTML = "";
+    tabsEl.style.display = "none";
+    return;
+  }
+  tabsEl.style.display = "";
   tabsEl.innerHTML = AXIS_ORDER.map(axis => {
     const active = state.axis === axis && !state.searchMode ? "active" : "";
     const ax = t().axes[axis];
@@ -278,8 +289,8 @@ function renderBreadcrumb() {
     elm.addEventListener("click", () => {
       const kind = elm.dataset.goto;
       if (kind === "home") resetToHome();
-      else if (kind === "axis") { state.value = null; state.articleKey = null; renderAll(); }
-      else if (kind === "value") { state.articleKey = null; renderAll(); }
+      else if (kind === "axis") { state.value = null; state.articleKey = null; state.quickManualKey = null; renderAll(); }
+      else if (kind === "value") { state.articleKey = null; state.quickManualKey = null; renderAll(); }
     });
   });
 }
@@ -403,6 +414,10 @@ function renderArticleDetail(areaEl) {
   `;
 
   document.getElementById("detail-back-btn").addEventListener("click", () => {
+    if (state.quickManualKey) {
+      resetToHome();
+      return;
+    }
     state.articleKey = null;
     renderAll();
     clearArticleUrl();
@@ -446,7 +461,7 @@ function renderArticleDetail(areaEl) {
   }
 }
 
-function gotoArticle(key) {
+function gotoArticle(key, opts) {
   const article = getArticleByKey(key);
   if (!article) return;
 
@@ -468,6 +483,7 @@ function gotoArticle(key) {
   }
 
   state.articleKey = key;
+  state.quickManualKey = (opts && opts.quickManual) ? key : null;
   renderAll();
   pushArticleUrl(key);
 }
@@ -510,6 +526,7 @@ function applyUrlParams() {
       state.value = article.version;
       state.articleKey = doc;
       state.browsing = true;
+      state.quickManualKey = (doc === "qm-admin-web" || doc === "qm-surveyor-app") ? doc : null;
     }
   }
 }
@@ -528,6 +545,7 @@ function resetToHome() {
   state.searchMode = false;
   state.searchQuery = "";
   state.browsing = false;
+  state.quickManualKey = null;
   document.getElementById("hero-search-input").value = "";
   document.getElementById("floating-search-input").value = "";
   renderAll();
@@ -659,12 +677,13 @@ document.addEventListener("DOMContentLoaded", () => {
   document.querySelectorAll(".qm-btn").forEach(btn => {
     btn.addEventListener("click", () => {
       state.browsing = true;
-      gotoArticle(btn.dataset.key);
+      gotoArticle(btn.dataset.key, { quickManual: true });
     });
   });
 
   window.addEventListener("popstate", () => {
     state.articleKey = null;
+    state.quickManualKey = null;
     applyUrlParams();
     renderAll();
   });
