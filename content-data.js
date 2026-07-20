@@ -475,62 +475,6 @@ const ARTICLES = [
     }
   },
   {
-    "key": "v2-getting-started",
-    "version": "2.0",
-    "platform": [
-      "ios",
-      "web"
-    ],
-    "feature": "getting-started",
-    "user": [
-      "all"
-    ],
-    "step": 1,
-    "order": 1,
-    "i18n": {
-      "en": {
-        "title": "Getting Started with beamo 2.0",
-        "html": "<p>beamo 2.0 is the previous generation of the beamo platform, covering account setup, basic 360&deg; capture workflows, and simple digital twin viewing.</p><p>For full step-by-step instructions, please use the legacy beamo 2.0 support site linked below.</p>"
-      },
-      "ko": {
-        "title": "beamo 2.0 시작하기",
-        "html": "<p>beamo 2.0은 이전 세대 beamo 플랫폼으로, 계정 설정과 기본 360도 촬영 워크플로우, 간단한 디지털 트윈 열람 기능을 제공합니다.</p><p>자세한 단계별 안내는 아래 링크된 기존 beamo 2.0 지원 사이트를 참고해 주세요.</p>"
-      },
-      "ja": {
-        "title": "beamo 2.0 をはじめる",
-        "html": "<p>beamo 2.0 は beamo プラットフォームの旧世代版で、アカウント設定、基本的な360度撮影ワークフロー、シンプルなデジタルツイン閲覧機能を提供します。</p><p>詳しい手順については、下記リンクの beamo 2.0 サポートサイトをご確認ください。</p>"
-      }
-    }
-  },
-  {
-    "key": "v2-teams",
-    "version": "2.0",
-    "platform": [
-      "web"
-    ],
-    "feature": "admin",
-    "user": [
-      "team-admin",
-      "super-admin"
-    ],
-    "step": null,
-    "order": 3,
-    "i18n": {
-      "en": {
-        "title": "Team Management (beamo 2.0)",
-        "html": "<p>Admins can create teams, invite members, and organize projects under each team in beamo 2.0.</p><p>Full team management steps are available on the legacy support site.</p>"
-      },
-      "ko": {
-        "title": "팀 관리 (beamo 2.0)",
-        "html": "<p>beamo 2.0에서는 관리자가 팀을 생성하고 멤버를 초대하며, 팀별로 프로젝트를 정리할 수 있습니다.</p><p>전체 팀 관리 절차는 기존 지원 사이트에서 확인할 수 있습니다.</p>"
-      },
-      "ja": {
-        "title": "チーム管理 (beamo 2.0)",
-        "html": "<p>beamo 2.0 では、管理者がチームを作成し、メンバーを招待して、チームごとにプロジェクトを整理できます。</p><p>チーム管理の詳しい手順は既存のサポートサイトをご覧ください。</p>"
-      }
-    }
-  },
-  {
     "key": "v2-capture-manual",
     "version": "2.0",
     "platform": [
