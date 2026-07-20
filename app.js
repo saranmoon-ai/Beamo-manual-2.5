@@ -212,6 +212,18 @@ function renderSectionHead() {
   document.getElementById("browse-desc").textContent = t().browseByDesc;
 }
 
+/* ---------- render: quick manual CTA row ---------- */
+function renderQuickManualRow() {
+  const surveyorTitleEl = document.getElementById("qm-surveyor-title");
+  const surveyorSubEl = document.getElementById("qm-surveyor-sub");
+  const adminTitleEl = document.getElementById("qm-admin-title");
+  const adminSubEl = document.getElementById("qm-admin-sub");
+  if (surveyorTitleEl) surveyorTitleEl.textContent = t().quickManualTitle;
+  if (surveyorSubEl) surveyorSubEl.textContent = t().quickManualSurveyorSub;
+  if (adminTitleEl) adminTitleEl.textContent = t().quickManualTitle;
+  if (adminSubEl) adminSubEl.textContent = t().quickManualAdminSub;
+}
+
 /* ---------- render: tabs / breadcrumb ---------- */
 function renderTabs() {
   const tabsEl = document.getElementById("tabs");
@@ -527,6 +539,7 @@ function renderAll() {
   renderHeader();
   renderHero();
   renderSectionHead();
+  renderQuickManualRow();
   renderTabs();
   renderBreadcrumb();
   renderChipList();
@@ -642,6 +655,13 @@ document.addEventListener("DOMContentLoaded", () => {
   floatingBtn?.addEventListener("click", () => floatingInput?.focus());
 
   document.getElementById("logo-home").addEventListener("click", resetToHome);
+
+  document.querySelectorAll(".qm-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      state.browsing = true;
+      gotoArticle(btn.dataset.key);
+    });
+  });
 
   window.addEventListener("popstate", () => {
     state.articleKey = null;
