@@ -69,6 +69,7 @@ function matchesAxisValue(article, axis, value) {
     case "feature":
       return article.feature === value;
     case "user":
+      if (article.feature === "appendix") return false;
       return article.user.includes(value) || (value !== "all" && article.user.includes("all"));
     case "step":
       return String(article.step) === value;
