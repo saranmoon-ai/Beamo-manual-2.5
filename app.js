@@ -3,7 +3,7 @@ const AXIS_VALUES = {
   version: ["3.0", "2.0"],
   platform: ["aos", "ios", "web"],
   feature: ["getting-started", "survey", "3d-workspace", "admin", "whats-new", "appendix"],
-  user: ["all", "surveyor", "admin"],
+  user: ["all", "super-admin", "site-manager", "team-admin", "surveyor", "collaborator"],
   step: ["1", "2", "3", "4"]
 };
 const AXIS_ORDER = ["feature", "step", "version", "platform", "user"];

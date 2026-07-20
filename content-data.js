@@ -119,7 +119,8 @@ const ARTICLES = [
     "feature": "survey",
     "user": [
       "surveyor",
-      "admin"
+      "team-admin",
+      "collaborator"
     ],
     "step": 2,
     "order": 5,
@@ -229,7 +230,9 @@ const ARTICLES = [
     ],
     "feature": "admin",
     "user": [
-      "admin"
+      "team-admin",
+      "site-manager",
+      "super-admin"
     ],
     "step": 4,
     "order": 9,
@@ -340,7 +343,8 @@ const ARTICLES = [
     "feature": "whats-new",
     "user": [
       "surveyor",
-      "admin"
+      "team-admin",
+      "collaborator"
     ],
     "step": null,
     "order": 13,
@@ -367,7 +371,7 @@ const ARTICLES = [
     ],
     "feature": "whats-new",
     "user": [
-      "admin"
+      "all"
     ],
     "step": null,
     "order": 14,
@@ -394,7 +398,8 @@ const ARTICLES = [
     ],
     "feature": "appendix",
     "user": [
-      "admin"
+      "team-admin",
+      "super-admin"
     ],
     "step": null,
     "order": 15,
@@ -505,7 +510,8 @@ const ARTICLES = [
     ],
     "feature": "admin",
     "user": [
-      "admin"
+      "team-admin",
+      "super-admin"
     ],
     "step": null,
     "order": 3,
@@ -966,7 +972,7 @@ const ARTICLES = [
     ],
     "feature": "getting-started",
     "user": [
-      "admin"
+      "team-admin"
     ],
     "step": 1,
     "order": 10,

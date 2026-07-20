@@ -43,7 +43,14 @@ const UI = {
         "whats-new": "새 기능",
         "appendix": "부록"
       },
-      user: { all: "전체", surveyor: "촬영자", admin: "관리자" },
+      user: {
+        all: "전체",
+        "super-admin": "최고 관리자",
+        "site-manager": "사이트 관리자",
+        "team-admin": "팀 관리자",
+        surveyor: "촬영자",
+        collaborator: "협력자"
+      },
       step: { "1": "1단계 · 준비", "2": "2단계 · 촬영", "3": "3단계 · 활용", "4": "4단계 · 관리" }
     },
     footerLinks: ["beamo 홈페이지", "회사 소개", "문의하기"],
@@ -93,7 +100,14 @@ const UI = {
         "whats-new": "What's New",
         "appendix": "Appendix"
       },
-      user: { all: "All Users", surveyor: "Surveyor", admin: "Admin" },
+      user: {
+        all: "All Users",
+        "super-admin": "Super Admin",
+        "site-manager": "Site Manager",
+        "team-admin": "Team Admin",
+        surveyor: "Surveyor",
+        collaborator: "Collaborator"
+      },
       step: { "1": "Step 1 · Prepare", "2": "Step 2 · Capture", "3": "Step 3 · Use", "4": "Step 4 · Manage" }
     },
     footerLinks: ["beamo Website", "About Us", "Contact"],
@@ -143,7 +157,14 @@ const UI = {
         "whats-new": "新機能",
         "appendix": "付録"
       },
-      user: { all: "すべて", surveyor: "撮影者", admin: "管理者" },
+      user: {
+        all: "すべて",
+        "super-admin": "スーパーアドミン",
+        "site-manager": "サイトマネージャー",
+        "team-admin": "チームアドミン",
+        surveyor: "撮影者",
+        collaborator: "コラボレーター"
+      },
       step: { "1": "ステップ1・準備", "2": "ステップ2・撮影", "3": "ステップ3・活用", "4": "ステップ4・管理" }
     },
     footerLinks: ["beamo ウェブサイト", "会社概要", "お問い合わせ"],
