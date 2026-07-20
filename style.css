@@ -407,6 +407,7 @@ body.mobile-article-view .floating-search{display:none;}
 .article-body hr{border:none;border-top:1px solid var(--border);margin:26px 0;}
 .article-body img{max-width:100%;height:auto;border-radius:10px;border:1px solid var(--border);margin:10px 0 18px;display:block;cursor:zoom-in;transition:opacity .15s ease;}
 .article-body img:hover{opacity:0.88;}
+.qm-article .article-body img{max-width:80%;}
 
 /* image lightbox */
 .lightbox-overlay{

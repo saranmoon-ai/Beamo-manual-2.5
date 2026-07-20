@@ -401,8 +401,9 @@ function renderArticleDetail(areaEl) {
     return;
   }
   const c = article.i18n[state.lang] || article.i18n.en;
+  const isQuickManual = article.key.startsWith("qm-");
   areaEl.innerHTML = `
-    <div class="article-detail">
+    <div class="article-detail${isQuickManual ? " qm-article" : ""}">
       <div class="a-top-row">
         <button type="button" class="back-btn" id="detail-back-btn">← ${escapeHtml(t().backToList)}</button>
         <button type="button" class="share-btn" id="detail-share-btn">${SHARE_ICON_SVG}<span>${escapeHtml(t().shareBtn)}</span></button>
