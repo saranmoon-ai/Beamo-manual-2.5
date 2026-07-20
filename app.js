@@ -402,9 +402,8 @@ function renderArticleDetail(areaEl) {
     return;
   }
   const c = article.i18n[state.lang] || article.i18n.en;
-  const isQuickManual = article.key.startsWith("qm-");
   areaEl.innerHTML = `
-    <div class="article-detail${isQuickManual ? " qm-article" : ""}">
+    <div class="article-detail">
       <div class="a-top-row">
         <button type="button" class="back-btn" id="detail-back-btn">← ${escapeHtml(t().backToList)}</button>
         <button type="button" class="share-btn" id="detail-share-btn">${SHARE_ICON_SVG}<span>${escapeHtml(t().shareBtn)}</span></button>
@@ -452,6 +451,8 @@ function renderArticleDetail(areaEl) {
       if (key) gotoArticle(key);
     });
   });
+
+  classifyArticleImages(areaEl);
 
   // scroll reading area to top when opening an article
   const box = areaEl.closest(".result-box");
@@ -577,6 +578,20 @@ function commitSearch(value) {
     state.browsing = true;
   }
   renderAll();
+}
+
+/* ---------- shrink portrait (tall) images so they don't dominate the screen;
+   wide/landscape images are left at full width ---------- */
+function classifyArticleImages(container) {
+  container.querySelectorAll(".article-body img").forEach(img => {
+    const classify = () => {
+      if (img.naturalWidth && img.naturalHeight && img.naturalHeight > img.naturalWidth) {
+        img.classList.add("img-portrait");
+      }
+    };
+    if (img.complete) classify();
+    else img.addEventListener("load", classify, { once: true });
+  });
 }
 
 /* ---------- image lightbox (click to enlarge) ---------- */
