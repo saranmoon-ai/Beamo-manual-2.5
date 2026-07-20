@@ -263,7 +263,7 @@ body.mobile-article-view .floating-search{display:none;}
 .section-head p{font-size:13.5px;color:rgba(255,255,255,0.8);margin-top:6px;word-break:keep-all;}
 
 .tabs{
-  display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:26px;
+  display:grid;grid-template-columns:repeat(6,1fr);gap:12px;margin-bottom:26px;
 }
 .tab-btn{
   position:relative;overflow:hidden;

@@ -15,6 +15,8 @@ const AXIS_ICON_SVG = {
   user: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><circle cx="10" cy="6.5" r="3.3" stroke-width="1.6"/><path d="M3.5 17c0-3.4 3-5.5 6.5-5.5s6.5 2.1 6.5 5.5" stroke-width="1.6" stroke-linecap="round"/></svg>',
   step: '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><path d="M3 17v-3.5h3.5V17M8.5 17V9.5H12V17M13.5 17V5h3.5v12" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg>'
 };
+const MANUAL_VIDEO_KEY = "qm-manual-video";
+const MANUAL_VIDEO_ICON_SVG = '<svg viewBox="0 0 20 20" fill="none" stroke="currentColor"><circle cx="10" cy="10" r="7.5" stroke-width="1.6"/><path d="M8.2 7.2 13 10l-4.8 2.8V7.2Z" fill="currentColor" stroke="none"/></svg>';
 const SOCIAL_ICON_SVG = {
   LinkedIn: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 8.5h4V23h-4V8.5zM8.5 8.5h3.83v2h.05c.53-1 1.84-2.05 3.78-2.05 4.04 0 4.79 2.66 4.79 6.11V23h-4v-6.9c0-1.64-.03-3.76-2.29-3.76-2.29 0-2.64 1.79-2.64 3.64V23h-4V8.5z"/></svg>',
   YouTube: '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.5 3.5 12 3.5 12 3.5s-7.5 0-9.4.6A3 3 0 0 0 .5 6.2 31 31 0 0 0 0 12a31 31 0 0 0 .5 5.8 3 3 0 0 0 2.1 2.1c1.9.6 9.4.6 9.4.6s7.5 0 9.4-.6a3 3 0 0 0 2.1-2.1A31 31 0 0 0 24 12a31 31 0 0 0-.5-5.8zM9.6 15.5v-7l6.4 3.5-6.4 3.5z"/></svg>',
@@ -239,7 +241,7 @@ function renderTabs() {
     return;
   }
   tabsEl.style.display = "";
-  tabsEl.innerHTML = AXIS_ORDER.map(axis => {
+  const axisTabsHtml = AXIS_ORDER.map(axis => {
     const active = state.axis === axis && !state.searchMode ? "active" : "";
     const ax = t().axes[axis];
     return `<button type="button" class="tab-btn ${active}" data-axis="${axis}">
@@ -251,7 +253,20 @@ function renderTabs() {
     </button>`;
   }).join("");
 
-  tabsEl.querySelectorAll(".tab-btn").forEach(btn => {
+  // "매뉴얼 영상" isn't a real browsable axis (no chip-list of values) — it's a
+  // single fixed destination, styled like the other 5 cards but wired like the
+  // "빠른 매뉴얼" buttons (gotoArticle directly, quickManual:true).
+  const videoTileHtml = `<button type="button" class="tab-btn" data-video-card="true">
+    <span class="tab-icon">${MANUAL_VIDEO_ICON_SVG}</span>
+    <span class="tab-content">
+      <span class="tab-title">${escapeHtml(t().manualVideoTitle)}</span>
+      <span class="tab-sub">${escapeHtml(t().manualVideoSub)}</span>
+    </span>
+  </button>`;
+
+  tabsEl.innerHTML = axisTabsHtml + videoTileHtml;
+
+  tabsEl.querySelectorAll(".tab-btn[data-axis]").forEach(btn => {
     btn.addEventListener("click", () => {
       state.axis = btn.dataset.axis;
       state.value = null;
@@ -261,6 +276,14 @@ function renderTabs() {
       renderAll();
     });
   });
+
+  const videoBtn = tabsEl.querySelector("[data-video-card]");
+  if (videoBtn) {
+    videoBtn.addEventListener("click", () => {
+      state.browsing = true;
+      gotoArticle(MANUAL_VIDEO_KEY, { quickManual: true });
+    });
+  }
 }
 
 function renderBreadcrumb() {
@@ -529,7 +552,7 @@ function applyUrlParams() {
       state.value = article.version;
       state.articleKey = doc;
       state.browsing = true;
-      state.quickManualKey = (doc === "qm-admin-web" || doc === "qm-surveyor-app") ? doc : null;
+      state.quickManualKey = (doc === "qm-admin-web" || doc === "qm-surveyor-app" || doc === MANUAL_VIDEO_KEY) ? doc : null;
     }
   }
 }
