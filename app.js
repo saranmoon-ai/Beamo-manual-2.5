@@ -242,7 +242,7 @@ function renderTabs() {
   }
   tabsEl.style.display = "";
   const axisTabsHtml = AXIS_ORDER.map(axis => {
-    const active = state.axis === axis && !state.searchMode ? "active" : "";
+    const active = state.browsing && state.axis === axis && !state.searchMode ? "active" : "";
     const ax = t().axes[axis];
     return `<button type="button" class="tab-btn ${active}" data-axis="${axis}">
       <span class="tab-icon">${AXIS_ICON_SVG[axis]}</span>
