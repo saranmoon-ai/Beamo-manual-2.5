@@ -438,6 +438,7 @@ html:lang(ja) .article-body th, html:lang(ja) .article-body td{word-break:normal
 .article-body td[colspan]{background:var(--primary-light);font-weight:600;color:var(--text);}
 .article-body a[data-goto-key]{color:var(--primary);font-weight:600;text-decoration:underline;cursor:pointer;}
 .article-body a[data-goto-key]:hover{color:var(--primary-hover);}
+.article-body a[data-goto-key] strong{color:inherit;}
 
 .external-link-box{
   margin-top:24px;padding:16px 18px;background:var(--primary-light);border-radius:12px;
