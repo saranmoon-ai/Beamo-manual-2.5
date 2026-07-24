@@ -1,0 +1,27 @@
+{
+  "key": "v2-capture-tracking-status",
+  "version": "2.0",
+  "platform": [
+    "ios"
+  ],
+  "feature": "survey",
+  "user": [
+    "surveyor"
+  ],
+  "step": 2,
+  "order": 14,
+  "i18n": {
+    "ko": {
+      "title": "촬영 중 위치 추적 상태 및 알림 안내",
+      "html": "<h3 id=\"h_01JVRMFD0HNBFHCDNS2NSYTDBV\">소개</h3>\n<p><span>Beamo iOS 앱의 촬영 화면(Capture)에서는 실시간 위치추적 상태에 따라 알림 메시지를 표시하여 사용자에게 안정성 정보를 제공합니다.</span><br><span>Tracking 상태는 '정상', '주의', '불안정' </span><span>세 단계로 나뉘며 각 상태에 따라 다른 메시지가 표시됩니다.</span></p>\n<h3 id=\"h_01JVRMFD0H0TNHSCRSSWAQA9VK\">누가 이 기능을 사용할 수 있나요?</h3>\n<table border=\"1\">\n<tbody>\n<tr>\n<td> </td>\n<td><strong>최고 관리자</strong></td>\n<td><strong>사이트 관리자</strong></td>\n<td><strong>팀 관리자</strong></td>\n<td><strong>촬영 담당자</strong></td>\n<td><strong>협력자</strong></td>\n<td><strong>열람자</strong></td>\n</tr>\n<tr>\n<td><span>Beamo 앱</span></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td>–</td>\n<td>–</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"h_01JVRN57GYWKQTN0NDZW3PF5TR\">상태 분류 및 메시지 안내</h3>\n<table>\n<thead>\n<tr>\n<th>상태</th>\n<th>메시지</th>\n<th>이유</th>\n<th>필요한 조치</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>정상<br></strong></td>\n<td>알림 없음</td>\n<td>위치 추적이 안정적인 상태</td>\n<td>별도의 조치 필요 없음</td>\n</tr>\n<tr>\n<td><strong>주의<br><br></strong></td>\n<td>\n<p><strong>위치추적 정확도가 변할 수 있습니다</strong></p>\n<p><br>천천히 움직여주세요 / 근처의 조명이 불충분합니다, 이동에 조심해 주세요</p>\n</td>\n<td>\n<p>- 지나치게 빠른 움직임</p>\n<p>- 인식 가능한 시각적 요소 부족</p>\n<p>- 조명 부족</p>\n</td>\n<td>천천히 움직이고, 조명이 충분한지 확인하세요</td>\n</tr>\n<tr>\n<td><strong>불안정<br></strong></td>\n<td>\n<p><strong>잠시 멈춰주세요</strong></p>\n<p>실시간 위치추적 안정화를 위해 잠시 시간이 필요합니다<br><br></p>\n</td>\n<td>- 위치 정보를 사용할 수 없음<br>- 초기화 중<br>- 재위치 파악 중</td>\n<td>잠시 멈추고 위치 추적이 안정될 때까지 기다려주세요</td>\n</tr>\n</tbody>\n</table>"
+    },
+    "ja": {
+      "title": "撮影中の位置トラッキング状況と通知ガイド",
+      "html": "<h3 id=\"h_01JVRH99E2X7DZ9915P2YVWYEZ\">イントロダクション</h3>\n<p>Beamo iOSアプリでは、撮影中にリアルタイムで位置トラッキングの状態を表示します。状態は正常、注意及び不安定の3つに分類され、安定したデータ取得をサポートします。<br><br></p>\n<h3 id=\"h_01JVRH99E2ZNEN7XAQVRGDW98B\">本機能対象ユーザー</h3>\n<table border=\"1\">\n<tbody>\n<tr>\n<td> </td>\n<td>\n<p><span><strong>スーパー アドミン</strong></span></p>\n</td>\n<td>\n<p><span><strong>サイト マネージャー</strong></span></p>\n</td>\n<td>\n<p><span><strong>チーム </strong><strong>アドミン</strong></span></p>\n</td>\n<td>\n<p><span><strong>サーベイヤー</strong></span></p>\n</td>\n<td>\n<p><span><strong>コラボレーター</strong></span></p>\n</td>\n<td>\n<p><span><strong>ビューアー</strong></span></p>\n</td>\n</tr>\n<tr>\n<td>Beamo アプリ使用</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span>–</span></p>\n</td>\n<td>\n<p><span>–</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"h_01JVRFZWFDVHT6FXVRZP70EGSF\">状態別メッセージ一覧</h3>\n<table>\n<thead>\n<tr>\n<th>ステータス</th>\n<th>メッセージ</th>\n<th>原因</th>\n<th>推奨アクション</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>正常</strong></td>\n<td>アラートなし</td>\n<td>位置トラッキングが安定</td>\n<td>操作不要</td>\n</tr>\n<tr>\n<td><strong>注意</strong></td>\n<td>\n<strong>トラッキング正確度が変わることがあります</strong><br>ゆっくり移動してください。<br>ここは照明が不十分なので、ご注意ください。</td>\n<td>・移動が速すぎる<br>・視認できる要素が不足<br>・照明が不十分</td>\n<td>ゆっくり動き、十分な明るさを確保してください</td>\n</tr>\n<tr>\n<td><strong>不安定</strong></td>\n<td>\n<strong>クイックポーズお願いします</strong><br>ライブトラッキングが安定するまでに少し時間がかかります。</td>\n<td>・位置トラッキング不可<br>・初期化中<br>・再ローカライズ中</td>\n<td>少し停止し、安定するまでお待ちください</td>\n</tr>\n</tbody>\n</table>\n<p> </p>"
+    },
+    "en": {
+      "title": "Tracking Status and Notification Guide During Capture",
+      "html": "<h3 id=\"h_01JVRFTQYHTT17KD82Z2GWBTF6\">Introduction</h3>\n<p>The Beamo iOS app shows real-time tracking status—1. Normal, 2. Caution, or 3. Unstable—during capture to help ensure stable data collection.</p>\n<h3 id=\"h_01JVRFTQYHHM890ETXM9QCJT23\">Who can use this feature? </h3>\n<table border=\"1\">\n<tbody>\n<tr>\n<td> </td>\n<td>\n<strong>Super A</strong><strong>dmin</strong>\n</td>\n<td><strong>Site Manager</strong></td>\n<td><strong>Team Admin</strong></td>\n<td><strong>Surveyor</strong></td>\n<td><strong>Collaborator</strong></td>\n<td><strong>Viewer</strong></td>\n</tr>\n<tr>\n<td>Beamo App</td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td>–</td>\n<td>–</td>\n</tr>\n</tbody>\n</table>\n<h3 id=\"h_01JVRFZWFDVHT6FXVRZP70EGSF\">Status Categories and Message Guide</h3>\n<table>\n<thead>\n<tr>\n<th>Status</th>\n<th>Message</th>\n<th>Reason why you see this message</th>\n<th>Required Action</th>\n</tr>\n</thead>\n<tbody>\n<tr>\n<td><strong>Normal</strong></td>\n<td>No alert</td>\n<td>Stable tracking</td>\n<td>No action required</td>\n</tr>\n<tr>\n<td><strong>Caution</strong></td>\n<td>\n<strong>Tracking accuracy may change<br></strong><br>'Please slow your movement' or  'Lighting is insufficient'</td>\n<td>- Excessive movement<br>- Lack of visual features<br>- Low lighting</td>\n<td>Move slowly and ensure better lighting</td>\n</tr>\n<tr>\n<td><strong>Unstable</strong></td>\n<td>\n<p><strong>Quick pause, please</strong></p>\n<p><br>'Live tracking needs a second to stabilize'</p>\n</td>\n<td>- Tracking unavailable<br>- Initializing<br>- Relocalizing</td>\n<td>Pause briefly and wait for tracking to stabilize</td>\n</tr>\n</tbody>\n</table>"
+    }
+  }
+}

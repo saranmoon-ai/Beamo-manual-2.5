@@ -1,0 +1,27 @@
+{
+  "key": "v2-capture-delete-point",
+  "version": "2.0",
+  "platform": [
+    "ios"
+  ],
+  "feature": "survey",
+  "user": [
+    "surveyor"
+  ],
+  "step": 2,
+  "order": 12,
+  "i18n": {
+    "ko": {
+      "title": "캡처된 포인트 삭제(Beamo 앱)",
+      "html": "<h3>소개</h3>\n<p><span>캡처 모드에서 캡처된 포인트를 삭제할 수 있습니다.</span></p>\n<h3>누가 이 기능을 사용할 수 있나요?</h3>\n<table border=\"1\">\n<tbody>\n<tr>\n<td> </td>\n<td><strong>최고 관리자</strong></td>\n<td><strong>사이트 관리자</strong></td>\n<td><strong>팀 관리자</strong></td>\n<td><strong>촬영 담당자</strong></td>\n<td><strong>협력자</strong></td>\n<td><strong>열람자</strong></td>\n</tr>\n<tr>\n<td><span>모바일 앱</span></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td>–</td>\n<td>–</td>\n</tr>\n</tbody>\n</table>\n<h3>캡처된 포인트 삭제</h3>\n<p><img src=\"images/v2-capture-delete-point/img-1.png\" alt=\"_______.png\" /></p>\n<p>1. <span>삭제할 포인트를 길게 누릅니다.  편집 모드가 활성화되면서 화면 오른쪽에 버튼 3개가 표시됩니다.</span></p>\n<p><span> </span>편집 모드 활성화</p>\n<p><img src=\"images/v2-capture-delete-point/img-2.png\" alt=\"preview.png\" /></p>\n<p>2. <span>맨 아래의 </span><strong>[휴지통(삭제)]</strong><span> 아이콘을 누르면 확인 메시지가 뜹니다.</span></p>\n<p><img src=\"images/v2-capture-delete-point/img-3.jpeg\" alt=\"_____________.jpeg\" /></p>\n<p>3. <span>확인 메시지에서 [삭제]를 누릅니다. </span></p>\n<p><img src=\"images/v2-capture-delete-point/img-4.png\" alt=\"_______.png\" /></p>\n<p>4. <span>포인트가 삭제됩니다. [←] 아이콘을 눌러서 캡처 모드로 돌아갑니다.</span></p>"
+    },
+    "ja": {
+      "title": "キャプチャーポイントを削除する（撮影中のポイント編集）",
+      "html": "<h3>イントロダクション</h3>\n<p>撮影中にモバイルアプリを編集モードに切り替えキャプチャポイントを削除することができます。</p>\n<h3>本機能対象ユーザー</h3>\n<table border=\"1\">\n<tbody>\n<tr>\n<td> </td>\n<td>\n<p><span><strong>スーパー アドミン</strong></span></p>\n</td>\n<td>\n<p><span><strong>サイト マネージャー</strong></span></p>\n</td>\n<td>\n<p><span><strong>チーム </strong><strong>アドミン</strong></span></p>\n</td>\n<td>\n<p><span><strong>サーベイヤー</strong></span></p>\n</td>\n<td>\n<p><span><strong>コラボレーター</strong></span></p>\n</td>\n<td>\n<p><span><strong>ビューアー</strong></span></p>\n</td>\n</tr>\n<tr>\n<td>Beamo アプリ使用</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span><strong>✓</strong></span></p>\n</td>\n<td>\n<p><span>–</span></p>\n</td>\n<td>\n<p><span>–</span></p>\n</td>\n</tr>\n</tbody>\n</table>\n<h3>撮影中にポイントを削除する方法</h3>\n<p><img src=\"images/v2-capture-delete-point/img-5.png\" alt=\"_.png\" /></p>\n<p>1. 撮影中にプレビューしたいポイントを長押し編集モードに切り替えます。</p>\n<p> </p>\n<p><img src=\"images/v2-capture-delete-point/img-6.png\" alt=\"Untitled.png\" /></p>\n<p>2. 画面右側の一番下の<strong>「ゴミ箱アイコン」</strong>をタップします。</p>\n<p> </p>\n<p><img src=\"images/v2-capture-delete-point/img-7.png\" alt=\"delete.png\" /></p>\n<p>3. <strong>ポイントを削除しますか？</strong>の確認メッセージが表示されます。<strong>「削除」</strong>をタップします。</p>\n<p> </p>\n<p> </p>\n<p><img src=\"images/v2-capture-delete-point/img-8.png\" alt=\"Untitled.png\" /></p>\n<p>削除プロセス中</p>\n<p>5. 該当するポイントが削除されたのを確認して、画面左上の<strong>[←]</strong> をタップしてキャプチャ画面に戻ります。</p>\n<p><img src=\"images/v2-capture-delete-point/img-9.png\" alt=\"Untitled.png\" /></p>\n<p>キャプチャを続けます。</p>"
+    },
+    "en": {
+      "title": "Deleting a captured point (Beamo App)",
+      "html": "<h3>Introduction</h3>\n<p>While in the capture mode, delete the captured point.</p>\n<h3>Who can use this feature? </h3>\n<table border=\"1\">\n<tbody>\n<tr>\n<td> </td>\n<td>\n<strong>Super A</strong><strong>dmin</strong>\n</td>\n<td><strong>Site Manager</strong></td>\n<td><strong>Team Admin</strong></td>\n<td><strong>Surveyor</strong></td>\n<td><strong>Collaborator</strong></td>\n<td><strong>Viewer</strong></td>\n</tr>\n<tr>\n<td>Mobile App</td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td><strong>✓</strong></td>\n<td>–</td>\n<td>–</td>\n</tr>\n</tbody>\n</table>\n<h3>Deleting a captured point</h3>\n<p><img src=\"images/v2-capture-delete-point/img-10.png\" alt=\"c5.png\" /></p>\n<p>1. Long-press the point that needs to be deleted.  Edit mode will be activated and the three buttons will appear on the right of the screen.</p>\n<h3>Editing mode activated</h3>\n<p><img src=\"images/v2-capture-delete-point/img-2.png\" alt=\"preview.png\" /></p>\n<p>2. Tap the <strong>[Delete]</strong> icon (the bottommost button) and the confirmation message will pop up.</p>\n<p><strong><img src=\"images/v2-capture-delete-point/img-11.png\" alt=\"delete.png\" /></strong></p>\n<p>3. Tap <strong>[Delete]</strong> in the confirmation message. </p>\n<p><strong><img src=\"images/v2-capture-delete-point/img-12.png\" alt=\"delete_1.png\" /></strong></p>\n<p>4. The point is deleted. Tap <strong>[←]</strong> to return to the capture mode.</p>"
+    }
+  }
+}
