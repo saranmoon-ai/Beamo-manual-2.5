@@ -64,13 +64,6 @@
       font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
       color: #272727;
     }
-    /* Decap's own preview pane wraps our widget preview in a container with
-       a serif default font - it wins on inheritance unless we set our own
-       font-family directly on every element inside, not just the wrapper. */
-    .beamo-html-editor-preview,
-    .beamo-html-editor-preview * {
-      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif !important;
-    }
     .beamo-html-editor:focus {
       outline: 2px solid var(--beamo-accent);
       outline-offset: 1px;
@@ -90,9 +83,6 @@
       color: #4E4E4E;
     }
     .beamo-html-editor img { max-width: 100%; }
-    .beamo-html-editor-preview {
-      /* same typography as the editable version, read-only in the side preview pane */
-    }
   </style>
 </head>
 <body>
@@ -151,6 +141,33 @@
       });
 
       CMS.registerWidget('html-wysiwyg', HtmlWysiwygControl, HtmlWysiwygPreview);
+
+      // The preview pane (right side) renders inside its own iframe, so the
+      // page-level <style> block above never reaches it - Decap requires
+      // registerPreviewStyle() specifically for anything shown there.
+      CMS.registerPreviewStyle(
+        '.beamo-html-editor-preview, .beamo-html-editor-preview * {' +
+        '  font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;' +
+        '}' +
+        '.beamo-html-editor-preview {' +
+        '  font-size: 15px;' +
+        '  line-height: 1.75;' +
+        '  color: #272727;' +
+        '}' +
+        '.beamo-html-editor-preview h2 { font-size: 1.15rem; font-weight: 700; margin: 0.9rem 0 0.4rem; }' +
+        '.beamo-html-editor-preview h2:first-child { margin-top: 0; }' +
+        '.beamo-html-editor-preview h3 { font-size: 1.02rem; font-weight: 700; margin: 0.7rem 0 0.35rem; }' +
+        '.beamo-html-editor-preview p { margin: 0 0 0.6rem; }' +
+        '.beamo-html-editor-preview ul, .beamo-html-editor-preview ol { margin: 0 0 0.6rem; padding-left: 1.25rem; }' +
+        '.beamo-html-editor-preview li { margin-bottom: 0.25rem; }' +
+        '.beamo-html-editor-preview strong { font-weight: 700; }' +
+        '.beamo-html-editor-preview blockquote {' +
+        '  margin: 0 0 0.6rem; padding: 0.4rem 0.9rem;' +
+        '  border-left: 3px solid #0046CC; background: #F5F8FF; color: #4E4E4E;' +
+        '}' +
+        '.beamo-html-editor-preview img { max-width: 100%; }',
+        { raw: true },
+      );
     })();
   </script>
 </body>
