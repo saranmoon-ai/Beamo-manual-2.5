@@ -1,0 +1,115 @@
+backend:
+  name: github
+  repo: saranmoon-ai/Beamo-manual-3.0
+  branch: main
+  # TODO: Cloudflare Workers에 OAuth 프록시 배포 후, 실제 워커 URL로 바꿔야 함
+  # (예: https://beamo-cms-oauth.<계정>.workers.dev)
+  base_url: https://REPLACE-WITH-YOUR-WORKER-URL.workers.dev
+  auth_endpoint: auth
+
+# 문서별 이미지 폴더 패턴과 안 맞는 항목(로고 등 사이트 공통 자산)을 위한 기본값
+media_folder: images
+public_folder: images
+
+collections:
+  - name: articles
+    label: 문서
+    label_singular: 문서
+    description: 이미 있는 매뉴얼 문서를 수정합니다. 새 문서는 컨플루언스 발행 파이프라인으로 추가하세요.
+    folder: content/articles
+    create: true
+    format: json
+    extension: json
+    # 파일명 = key 필드 값 (예: s1-1.json). 저장 후 key를 바꾸면 새 파일이 생기니 주의.
+    slug: "{{key}}"
+    # 문서별 이미지 폴더(images/<key>/...) 구조를 그대로 따라감
+    media_folder: "images/{{key}}"
+    public_folder: "images/{{key}}"
+    fields:
+      - label: "Key (문서 ID)"
+        name: key
+        widget: string
+        hint: "저장 후에는 절대 바꾸지 마세요 — 파일명·이미지 폴더·컨플루언스 매핑과 전부 연결되어 있어요."
+
+      - label: 버전
+        name: version
+        widget: select
+        options: ["3.0", "2.0"]
+
+      - label: 플랫폼
+        name: platform
+        widget: select
+        multiple: true
+        options: ["web", "aos", "ios"]
+
+      - label: 기능 카테고리
+        name: feature
+        widget: select
+        options:
+          - { label: "시작하기", value: "getting-started" }
+          - { label: "서베이", value: "survey" }
+          - { label: "3D 워크스페이스", value: "3d-workspace" }
+          - { label: "관리자", value: "admin" }
+          - { label: "새 소식", value: "whats-new" }
+          - { label: "부록", value: "appendix" }
+
+      - label: 대상 사용자
+        name: user
+        widget: select
+        multiple: true
+        options: ["all", "surveyor", "team-admin", "collaborator", "site-manager", "super-admin"]
+
+      - label: 스텝
+        name: step
+        widget: number
+        value_type: int
+        required: false
+
+      - label: 정렬 순서
+        name: order
+        widget: number
+        value_type: int
+        hint: "같은 스텝 안에서 문서가 나열되는 순서예요. 숫자가 작을수록 먼저 나와요."
+
+      - label: 다국어 콘텐츠
+        name: i18n
+        widget: object
+        fields:
+          - label: 한국어
+            name: ko
+            widget: object
+            required: false
+            fields:
+              - { label: 제목, name: title, widget: string }
+              - label: "본문 (HTML)"
+                name: html
+                widget: code
+                default_language: html
+                allow_language_selection: false
+                output_code_only: true
+
+          - label: English
+            name: en
+            widget: object
+            required: false
+            fields:
+              - { label: Title, name: title, widget: string }
+              - label: "Body (HTML)"
+                name: html
+                widget: code
+                default_language: html
+                allow_language_selection: false
+                output_code_only: true
+
+          - label: 日本語
+            name: ja
+            widget: object
+            required: false
+            fields:
+              - { label: タイトル, name: title, widget: string }
+              - label: "本文 (HTML)"
+                name: html
+                widget: code
+                default_language: html
+                allow_language_selection: false
+                output_code_only: true
