@@ -61,6 +61,15 @@
       background: #fff;
       line-height: 1.75;
       font-size: 15px;
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif;
+      color: #272727;
+    }
+    /* Decap's own preview pane wraps our widget preview in a container with
+       a serif default font - it wins on inheritance unless we set our own
+       font-family directly on every element inside, not just the wrapper. */
+    .beamo-html-editor-preview,
+    .beamo-html-editor-preview * {
+      font-family: -apple-system, BlinkMacSystemFont, "Apple SD Gothic Neo", "Malgun Gothic", "Segoe UI", sans-serif !important;
     }
     .beamo-html-editor:focus {
       outline: 2px solid var(--beamo-accent);
