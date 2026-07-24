@@ -83,6 +83,26 @@
       color: #4E4E4E;
     }
     .beamo-html-editor img { max-width: 100%; }
+
+    .beamo-insert-image-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-bottom: 6px;
+      padding: 5px 10px;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--beamo-accent);
+      background: var(--beamo-bg);
+      border: 1px solid var(--beamo-accent);
+      border-radius: 6px;
+      cursor: pointer;
+      font-family: inherit;
+    }
+    .beamo-insert-image-btn:hover {
+      background: var(--beamo-accent);
+      color: #fff;
+    }
   </style>
 </head>
 <body>
@@ -109,25 +129,109 @@
             this.el.innerHTML = this.props.value || '';
           }
         },
-        shouldComponentUpdate: function () {
+        shouldComponentUpdate: function (nextProps) {
           // This node's content is owned by the browser (contentEditable),
           // not React - letting React re-render it on every keystroke would
-          // reset the cursor to the start each time.
-          return false;
+          // reset the cursor to the start each time. The one exception is
+          // mediaPaths: that's how Decap hands back a picked/uploaded image,
+          // and componentDidUpdate (which only fires when this returns
+          // true) is what we use to notice it.
+          return nextProps.mediaPaths !== this.props.mediaPaths;
+        },
+        componentDidUpdate: function () {
+          var mediaPaths = this.props.mediaPaths;
+          if (!mediaPaths) return;
+          var controlID = this.getMediaControlID();
+          var mediaPath = mediaPaths.get ? mediaPaths.get(controlID) : null;
+          if (mediaPath && mediaPath !== this._lastInsertedPath) {
+            this._lastInsertedPath = mediaPath;
+            this.insertImageAtSavedRange(mediaPath);
+            if (this.props.onRemoveInsertedMedia) {
+              this.props.onRemoveInsertedMedia(controlID);
+            }
+          }
+        },
+        getMediaControlID: function () {
+          if (!this._mediaControlID) {
+            this._mediaControlID = 'html-wysiwyg-' + Math.random().toString(36).slice(2);
+          }
+          return this._mediaControlID;
         },
         handleInput: function () {
           this.props.onChange(this.el.innerHTML);
         },
+        saveSelection: function () {
+          var sel = window.getSelection();
+          if (sel && sel.rangeCount > 0 && this.el && this.el.contains(sel.anchorNode)) {
+            this.savedRange = sel.getRangeAt(0).cloneRange();
+          }
+        },
+        insertImageAtSavedRange: function (path) {
+          if (!this.el) return;
+          var img = document.createElement('img');
+          img.src = path;
+          img.alt = '';
+
+          if (this.savedRange && this.el.contains(this.savedRange.startContainer)) {
+            var sel = window.getSelection();
+            sel.removeAllRanges();
+            sel.addRange(this.savedRange);
+            this.savedRange.deleteContents();
+            this.savedRange.insertNode(img);
+            this.savedRange.setStartAfter(img);
+            this.savedRange.collapse(true);
+            sel.removeAllRanges();
+            sel.addRange(this.savedRange);
+          } else {
+            this.el.appendChild(img);
+          }
+          this.handleInput();
+        },
+        handleInsertImageMouseDown: function (e) {
+          // preventDefault stops the button from stealing focus away from
+          // the contentEditable box, so the text cursor position survives
+          // long enough for saveSelection() to capture it.
+          e.preventDefault();
+          this.saveSelection();
+        },
+        handleInsertImageClick: function () {
+          if (!this.props.onOpenMediaLibrary) return;
+          this.props.onOpenMediaLibrary({
+            controlID: this.getMediaControlID(),
+            forImage: true,
+            privateUpload: this.props.field && this.props.field.get ? this.props.field.get('private') : undefined,
+            value: null,
+            allowMultiple: false,
+            config: this.props.field && this.props.field.get ? this.props.field.get('media_library') : undefined,
+            field: this.props.field,
+          });
+        },
         render: function () {
           var self = this;
-          return h('div', {
-            id: this.props.forID,
-            className: (this.props.classNameWrapper || '') + ' beamo-html-editor',
-            contentEditable: true,
-            suppressContentEditableWarning: true,
-            onInput: this.handleInput,
-            ref: function (el) { self.el = el; },
-          });
+          return h(
+            'div',
+            null,
+            h(
+              'button',
+              {
+                type: 'button',
+                className: 'beamo-insert-image-btn',
+                onMouseDown: this.handleInsertImageMouseDown,
+                onClick: this.handleInsertImageClick,
+              },
+              '🖼 이미지 삽입',
+            ),
+            h('div', {
+              id: this.props.forID,
+              className: (this.props.classNameWrapper || '') + ' beamo-html-editor',
+              contentEditable: true,
+              suppressContentEditableWarning: true,
+              onInput: this.handleInput,
+              onMouseUp: this.saveSelection,
+              onKeyUp: this.saveSelection,
+              ref: function (el) { self.el = el; },
+            }),
+          );
         },
       });
 
