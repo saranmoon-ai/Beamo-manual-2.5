@@ -79,12 +79,10 @@ collections:
             required: false
             fields:
               - { label: 제목, name: title, widget: string }
-              - label: "본문 (HTML)"
+              - label: "본문"
                 name: html
-                widget: code
-                default_language: html
-                allow_language_selection: false
-                output_code_only: true
+                widget: html-wysiwyg
+                hint: "화면에 보이는 그대로 클릭해서 바로 고칠 수 있어요."
 
           - label: English
             name: en
@@ -92,12 +90,10 @@ collections:
             required: false
             fields:
               - { label: Title, name: title, widget: string }
-              - label: "Body (HTML)"
+              - label: "Body"
                 name: html
-                widget: code
-                default_language: html
-                allow_language_selection: false
-                output_code_only: true
+                widget: html-wysiwyg
+                hint: "Click directly on the text below to edit it."
 
           - label: 日本語
             name: ja
@@ -105,9 +101,7 @@ collections:
             required: false
             fields:
               - { label: タイトル, name: title, widget: string }
-              - label: "本文 (HTML)"
+              - label: "本文"
                 name: html
-                widget: code
-                default_language: html
-                allow_language_selection: false
-                output_code_only: true
+                widget: html-wysiwyg
+                hint: "下のテキストを直接クリックして編集できます。"

@@ -51,10 +51,98 @@
     button[class*="LoginButton"]:hover {
       background-color: var(--beamo-accent-hover) !important;
     }
+
+    /* Custom "html-wysiwyg" widget (see script below) */
+    .beamo-html-editor {
+      min-height: 220px;
+      padding: 14px 16px;
+      border: 1px solid #E8E8E8;
+      border-radius: 6px;
+      background: #fff;
+      line-height: 1.75;
+      font-size: 15px;
+    }
+    .beamo-html-editor:focus {
+      outline: 2px solid var(--beamo-accent);
+      outline-offset: 1px;
+    }
+    .beamo-html-editor h2 { font-size: 1.15rem; font-weight: 700; margin: 0.9rem 0 0.4rem; }
+    .beamo-html-editor h2:first-child { margin-top: 0; }
+    .beamo-html-editor h3 { font-size: 1.02rem; font-weight: 700; margin: 0.7rem 0 0.35rem; }
+    .beamo-html-editor p { margin: 0 0 0.6rem; }
+    .beamo-html-editor ul, .beamo-html-editor ol { margin: 0 0 0.6rem; padding-left: 1.25rem; }
+    .beamo-html-editor li { margin-bottom: 0.25rem; }
+    .beamo-html-editor strong { font-weight: 700; }
+    .beamo-html-editor blockquote {
+      margin: 0 0 0.6rem;
+      padding: 0.4rem 0.9rem;
+      border-left: 3px solid var(--beamo-accent);
+      background: var(--beamo-bg);
+      color: #4E4E4E;
+    }
+    .beamo-html-editor img { max-width: 100%; }
+    .beamo-html-editor-preview {
+      /* same typography as the editable version, read-only in the side preview pane */
+    }
   </style>
 </head>
 <body>
   <!-- Decap CMS (formerly Netlify CMS) loaded from CDN - no build step needed. -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+  <!--
+    Decap has no built-in widget that edits raw HTML with a rendered,
+    directly-editable view - "markdown"/"richtext" both store markdown, and
+    converting our existing (Confluence-sourced) HTML through markdown risks
+    mangling tables/nested lists on save. This is a small custom widget
+    (Decap's documented registerWidget extension point, not a hack) that
+    shows the real rendered HTML in a contentEditable box and writes
+    whatever you type straight back as HTML - no markdown round-trip.
+
+    `createClass` and `h` (React.createElement) are exposed as globals by
+    decap-cms.js itself, so no separate React script tag is needed.
+  -->
+  <script>
+    (function () {
+      var HtmlWysiwygControl = createClass({
+        componentDidMount: function () {
+          if (this.el) {
+            this.el.innerHTML = this.props.value || '';
+          }
+        },
+        shouldComponentUpdate: function () {
+          // This node's content is owned by the browser (contentEditable),
+          // not React - letting React re-render it on every keystroke would
+          // reset the cursor to the start each time.
+          return false;
+        },
+        handleInput: function () {
+          this.props.onChange(this.el.innerHTML);
+        },
+        render: function () {
+          var self = this;
+          return h('div', {
+            id: this.props.forID,
+            className: (this.props.classNameWrapper || '') + ' beamo-html-editor',
+            contentEditable: true,
+            suppressContentEditableWarning: true,
+            onInput: this.handleInput,
+            ref: function (el) { self.el = el; },
+          });
+        },
+      });
+
+      var HtmlWysiwygPreview = createClass({
+        render: function () {
+          return h('div', {
+            className: 'beamo-html-editor beamo-html-editor-preview',
+            dangerouslySetInnerHTML: { __html: this.props.value || '' },
+          });
+        },
+      });
+
+      CMS.registerWidget('html-wysiwyg', HtmlWysiwygControl, HtmlWysiwygPreview);
+    })();
+  </script>
 </body>
 </html>
