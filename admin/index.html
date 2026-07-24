@@ -206,6 +206,74 @@
             field: this.props.field,
           });
         },
+        handleInsertLinkMouseDown: function (e) {
+          e.preventDefault();
+          this.saveSelection();
+        },
+        handleInsertLinkClick: function () {
+          if (!this.el) return;
+          var url = window.prompt('연결할 주소(URL)를 입력하세요:', 'https://');
+          if (!url) return;
+
+          this.el.focus();
+          var sel = window.getSelection();
+          if (this.savedRange && this.el.contains(this.savedRange.startContainer)) {
+            sel.removeAllRanges();
+            sel.addRange(this.savedRange);
+          }
+          // execCommand is old API, but it's still the simplest reliable way
+          // to turn the current contentEditable selection into a link
+          // (wraps selected text, or inserts the URL as new linked text if
+          // nothing was selected) without hand-rolling range/node surgery.
+          document.execCommand('createLink', false, url);
+          this.handleInput();
+        },
+        handleInsertDocLinkMouseDown: function (e) {
+          e.preventDefault();
+          this.saveSelection();
+        },
+        handleInsertDocLinkClick: function () {
+          if (!this.el) return;
+          // Matches the data-goto-key convention app.js already reads
+          // (app.js:470-476) for cross-article navigation inside the site -
+          // not a real href, so this can't reuse execCommand('createLink').
+          var key = window.prompt(
+            '이동할 문서의 key를 입력하세요 (예: s1-2, a-roles, f-360video).\n' +
+              '왼쪽 문서 목록에 표시된 이름이 곧 key예요.',
+            '',
+          );
+          if (!key) return;
+          key = key.trim();
+          if (!key) return;
+
+          this.el.focus();
+          var sel = window.getSelection();
+          var range;
+          if (this.savedRange && this.el.contains(this.savedRange.startContainer)) {
+            range = this.savedRange;
+          } else {
+            range = document.createRange();
+            range.selectNodeContents(this.el);
+            range.collapse(false);
+          }
+          sel.removeAllRanges();
+          sel.addRange(range);
+
+          var selectedText = range.toString();
+          var a = document.createElement('a');
+          a.setAttribute('href', 'javascript:void(0)');
+          a.setAttribute('data-goto-key', key);
+          a.textContent = selectedText || key;
+
+          range.deleteContents();
+          range.insertNode(a);
+          range.setStartAfter(a);
+          range.collapse(true);
+          sel.removeAllRanges();
+          sel.addRange(range);
+
+          this.handleInput();
+        },
         render: function () {
           var self = this;
           return h(
@@ -220,6 +288,28 @@
                 onClick: this.handleInsertImageClick,
               },
               '🖼 이미지 삽입',
+            ),
+            h(
+              'button',
+              {
+                type: 'button',
+                className: 'beamo-insert-image-btn',
+                style: { marginLeft: '6px' },
+                onMouseDown: this.handleInsertLinkMouseDown,
+                onClick: this.handleInsertLinkClick,
+              },
+              '🔗 링크 삽입',
+            ),
+            h(
+              'button',
+              {
+                type: 'button',
+                className: 'beamo-insert-image-btn',
+                style: { marginLeft: '6px' },
+                onMouseDown: this.handleInsertDocLinkMouseDown,
+                onClick: this.handleInsertDocLinkClick,
+              },
+              '📄 문서 링크',
             ),
             h('div', {
               id: this.props.forID,
