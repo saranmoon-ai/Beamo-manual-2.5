@@ -2,9 +2,7 @@ backend:
   name: github
   repo: saranmoon-ai/Beamo-manual-3.0
   branch: main
-  # TODO: Cloudflare Workers에 OAuth 프록시 배포 후, 실제 워커 URL로 바꿔야 함
-  # (예: https://beamo-cms-oauth.<계정>.workers.dev)
-  base_url: https://REPLACE-WITH-YOUR-WORKER-URL.workers.dev
+  base_url: https://beamo-cms-oauth.saran-moon.workers.dev
   auth_endpoint: auth
 
 # 문서별 이미지 폴더 패턴과 안 맞는 항목(로고 등 사이트 공통 자산)을 위한 기본값
